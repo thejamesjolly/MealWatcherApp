@@ -1,3 +1,12 @@
+# Specific Files for this project
+
+MealWatcher/MealWatcher/DropBoxCredentials.swift
+
+## IntelliJ Idea Taken from "github/gitignore/Global/JetBrains.gitignore" repo
+### Must Fully specify path or use "**" before ".idea" to access into xcodeproj
+MealWatcher/MealWatcher.xcodeproj/.idea/workspace.xml
+
+
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore

@@ -1,0 +1,757 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6B25C2372D55072F000568D9 /* DropBoxCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B25C2362D550726000568D9 /* DropBoxCredentials.swift */; };
+		6B26012A2C0A15310094A10D /* LoggerPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2601292C0A15310094A10D /* LoggerPhone.swift */; };
+		6B26012E2C0A2BE00094A10D /* LoggerWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B26012D2C0A2BE00094A10D /* LoggerWatch.swift */; };
+		6B70566B2B9CC46C004FD4D0 /* PhotoReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B70566A2B9CC46C004FD4D0 /* PhotoReviewView.swift */; };
+		6B70566F2B9CEC31004FD4D0 /* FileManagerPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B70566E2B9CEC31004FD4D0 /* FileManagerPhoto.swift */; };
+		6BDA590F2C091C56002F3121 /* ComponentViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDA590E2C091C56002F3121 /* ComponentViews.swift */; };
+		6BDE2ECD2BBB167800FB668F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6BDE2ECC2BBB167800FB668F /* PrivacyInfo.xcprivacy */; };
+		6BDE2ECE2BBB167800FB668F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6BDE2ECC2BBB167800FB668F /* PrivacyInfo.xcprivacy */; };
+		6BFEFF8C2D6674CA00D25F4F /* ExampleDropBoxCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFEFF8B2D6674BF00D25F4F /* ExampleDropBoxCredentials.swift */; };
+		DD04B7F32A2F92E300745FE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD04B7F22A2F92E300745FE0 /* Assets.xcassets */; };
+		DD04B7F62A2F92E300745FE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD04B7F52A2F92E300745FE0 /* Preview Assets.xcassets */; };
+		DD04B7FC2A2F92E300745FE0 /* MealWatcher Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = DD04B7FB2A2F92E300745FE0 /* MealWatcher Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DD04B8052A2F92E400745FE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD04B8042A2F92E400745FE0 /* Assets.xcassets */; };
+		DD04B8082A2F92E400745FE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD04B8072A2F92E400745FE0 /* Preview Assets.xcassets */; };
+		DD18AEE32ACF489D00F59480 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD18AEE22ACF489D00F59480 /* SettingsView.swift */; };
+		DD33E1DF2A4C085400DAF016 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC0CF752A35B27800F29521 /* WatchConnectivityManager.swift */; };
+		DD33F6312AD479BD00F47EF6 /* RingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33F6302AD479BD00F47EF6 /* RingManager.swift */; };
+		DD3E1FD32A4BCC0900BE104E /* CMUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E1FD22A4BCC0900BE104E /* CMUtils.swift */; };
+		DD3E1FD82A4BE69000BE104E /* WatchFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E1FD72A4BE69000BE104E /* WatchFileManager.swift */; };
+		DD55F2622A4CC89D00855F35 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD55F2612A4CC89D00855F35 /* FileManager.swift */; };
+		DD55F2652A4CE1E200855F35 /* SwiftyDropbox in Frameworks */ = {isa = PBXBuildFile; productRef = DD55F2642A4CE1E200855F35 /* SwiftyDropbox */; };
+		DD55F2672A4CFA2B00855F35 /* DropBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD55F2662A4CFA2B00855F35 /* DropBox.swift */; };
+		DD6033D02AE073D200B9A6E6 /* ExtendedRuntimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6033CF2AE073D200B9A6E6 /* ExtendedRuntimeManager.swift */; };
+		DD6CF8D22A33E7C10016948B /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7229F32A320FAB002320A5 /* Camera.swift */; };
+		DD6CF8D32A33E7C10016948B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD04B7F02A2F92E100745FE0 /* ContentView.swift */; };
+		DD6CF8D62A33E8C20016948B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CF8D52A33E8C20016948B /* ContentView.swift */; };
+		DD6CF8DB2A33F59C0016948B /* ViewModelPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CF8DA2A33F59C0016948B /* ViewModelPhone.swift */; };
+		DD6CF8DD2A33FCCD0016948B /* ViewModelWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CF8DC2A33FCCD0016948B /* ViewModelWatch.swift */; };
+		DD7FB1B82AD33DB500ED10E2 /* MealWatcherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7FB1B72AD33DB500ED10E2 /* MealWatcherApp.swift */; };
+		DD7FB1BB2AD33F2B00ED10E2 /* MealWatcherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7FB1B92AD33F2B00ED10E2 /* MealWatcherApp.swift */; };
+		DD9722582AD474340008A8B4 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9722572AD474340008A8B4 /* BluetoothManager.swift */; };
+		DDA2ED442A95A3B10097854B /* EMAQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2ED432A95A3B10097854B /* EMAQuestions.swift */; };
+		DDA2ED462A95A3C30097854B /* SampleSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2ED452A95A3C30097854B /* SampleSurvey.swift */; };
+		DDA2ED482A95A3D30097854B /* SurveyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2ED472A95A3D30097854B /* SurveyHelper.swift */; };
+		DDA2ED4A2A95A3DE0097854B /* SurveyModelClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2ED492A95A3DE0097854B /* SurveyModelClass.swift */; };
+		DDA2ED4C2A95A3E80097854B /* SurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2ED4B2A95A3E80097854B /* SurveyView.swift */; };
+		DDA2ED522A95A3FC0097854B /* KeyboardAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2ED4E2A95A3FC0097854B /* KeyboardAware.swift */; };
+		DDA2ED532A95A3FC0097854B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = DDA2ED4F2A95A3FC0097854B /* LICENSE */; };
+		DDA2ED542A95A3FC0097854B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DDA2ED502A95A3FC0097854B /* README.md */; };
+		DDA2ED552A95A3FC0097854B /* KeyboardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2ED512A95A3FC0097854B /* KeyboardInfo.swift */; };
+		DDC0CF772A35B27800F29521 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC0CF752A35B27800F29521 /* WatchConnectivityManager.swift */; };
+		DDF184342B26F5FE00AB3226 /* BackgroundTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF184332B26F5FE00AB3226 /* BackgroundTasks.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DD04B7FD2A2F92E300745FE0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD04B7E32A2F92E100745FE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD04B7FA2A2F92E300745FE0;
+			remoteInfo = "WatchPhoneAppDemo Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DD04B80E2A2F92E400745FE0 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				DD04B7FC2A2F92E300745FE0 /* MealWatcher Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6B25C2362D550726000568D9 /* DropBoxCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropBoxCredentials.swift; sourceTree = "<group>"; };
+		6B2601292C0A15310094A10D /* LoggerPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerPhone.swift; sourceTree = "<group>"; };
+		6B26012D2C0A2BE00094A10D /* LoggerWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerWatch.swift; sourceTree = "<group>"; };
+		6B70566A2B9CC46C004FD4D0 /* PhotoReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoReviewView.swift; sourceTree = "<group>"; };
+		6B70566E2B9CEC31004FD4D0 /* FileManagerPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerPhoto.swift; sourceTree = "<group>"; };
+		6BDA590E2C091C56002F3121 /* ComponentViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViews.swift; sourceTree = "<group>"; };
+		6BDE2ECC2BBB167800FB668F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		6BFEFF8B2D6674BF00D25F4F /* ExampleDropBoxCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleDropBoxCredentials.swift; sourceTree = "<group>"; };
+		DD04B7EB2A2F92E100745FE0 /* MealWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealWatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD04B7F02A2F92E100745FE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DD04B7F22A2F92E300745FE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DD04B7F52A2F92E300745FE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DD04B7FB2A2F92E300745FE0 /* MealWatcher Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MealWatcher Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD04B8042A2F92E400745FE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DD04B8072A2F92E400745FE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DD18AEE22ACF489D00F59480 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DD33F6302AD479BD00F47EF6 /* RingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingManager.swift; sourceTree = "<group>"; };
+		DD3E1FD22A4BCC0900BE104E /* CMUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMUtils.swift; sourceTree = "<group>"; };
+		DD3E1FD72A4BE69000BE104E /* WatchFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchFileManager.swift; sourceTree = "<group>"; };
+		DD55F2612A4CC89D00855F35 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		DD55F2662A4CFA2B00855F35 /* DropBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropBox.swift; sourceTree = "<group>"; };
+		DD6033CF2AE073D200B9A6E6 /* ExtendedRuntimeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedRuntimeManager.swift; sourceTree = "<group>"; };
+		DD6AA1892A38861F000CC0B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DD6AA18C2A38A12D000CC0B8 /* MealWatcher-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MealWatcher-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		DD6CF8D52A33E8C20016948B /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DD6CF8DA2A33F59C0016948B /* ViewModelPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelPhone.swift; sourceTree = "<group>"; };
+		DD6CF8DC2A33FCCD0016948B /* ViewModelWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelWatch.swift; sourceTree = "<group>"; };
+		DD7229F32A320FAB002320A5 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		DD7FB1B62AD33D7700ED10E2 /* MealWatcher.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = MealWatcher.entitlements; sourceTree = "<group>"; };
+		DD7FB1B72AD33DB500ED10E2 /* MealWatcherApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealWatcherApp.swift; sourceTree = "<group>"; };
+		DD7FB1B92AD33F2B00ED10E2 /* MealWatcherApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealWatcherApp.swift; sourceTree = "<group>"; };
+		DD7FB1BA2AD33F2B00ED10E2 /* MealWatcher.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = MealWatcher.entitlements; sourceTree = "<group>"; };
+		DD9722572AD474340008A8B4 /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		DDA2ED432A95A3B10097854B /* EMAQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EMAQuestions.swift; path = Survey/EMAQuestions.swift; sourceTree = "<group>"; };
+		DDA2ED452A95A3C30097854B /* SampleSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleSurvey.swift; path = Survey/SampleSurvey.swift; sourceTree = "<group>"; };
+		DDA2ED472A95A3D30097854B /* SurveyHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SurveyHelper.swift; path = Survey/SurveyHelper.swift; sourceTree = "<group>"; };
+		DDA2ED492A95A3DE0097854B /* SurveyModelClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SurveyModelClass.swift; path = Survey/SurveyModelClass.swift; sourceTree = "<group>"; };
+		DDA2ED4B2A95A3E80097854B /* SurveyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SurveyView.swift; path = Survey/SurveyView.swift; sourceTree = "<group>"; };
+		DDA2ED4E2A95A3FC0097854B /* KeyboardAware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAware.swift; sourceTree = "<group>"; };
+		DDA2ED4F2A95A3FC0097854B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		DDA2ED502A95A3FC0097854B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DDA2ED512A95A3FC0097854B /* KeyboardInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInfo.swift; sourceTree = "<group>"; };
+		DDC0CF752A35B27800F29521 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
+		DDF184332B26F5FE00AB3226 /* BackgroundTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTasks.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DD04B7E82A2F92E100745FE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD55F2652A4CE1E200855F35 /* SwiftyDropbox in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD04B7F82A2F92E300745FE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DD04B7E22A2F92E100745FE0 = {
+			isa = PBXGroup;
+			children = (
+				6BDE2ECC2BBB167800FB668F /* PrivacyInfo.xcprivacy */,
+				DD6CF8D92A33EB130016948B /* Shared */,
+				DD04B7ED2A2F92E100745FE0 /* MealWatcher */,
+				DD04B7FF2A2F92E300745FE0 /* MealWatcher Watch App */,
+				DD04B7EC2A2F92E100745FE0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DD04B7EC2A2F92E100745FE0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DD04B7EB2A2F92E100745FE0 /* MealWatcher.app */,
+				DD04B7FB2A2F92E300745FE0 /* MealWatcher Watch App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DD04B7ED2A2F92E100745FE0 /* MealWatcher */ = {
+			isa = PBXGroup;
+			children = (
+				DD7FB1BA2AD33F2B00ED10E2 /* MealWatcher.entitlements */,
+				DD9722562AD474120008A8B4 /* GenkiRing */,
+				DDA2ED422A95A3910097854B /* Survey */,
+				DD6AA1892A38861F000CC0B8 /* Info.plist */,
+				DD04B7F22A2F92E300745FE0 /* Assets.xcassets */,
+				DD7FB1B92AD33F2B00ED10E2 /* MealWatcherApp.swift */,
+				6B2601292C0A15310094A10D /* LoggerPhone.swift */,
+				DD04B7F02A2F92E100745FE0 /* ContentView.swift */,
+				DD18AEE22ACF489D00F59480 /* SettingsView.swift */,
+				6B70566A2B9CC46C004FD4D0 /* PhotoReviewView.swift */,
+				DD7229F32A320FAB002320A5 /* Camera.swift */,
+				DD55F2662A4CFA2B00855F35 /* DropBox.swift */,
+				6B25C2362D550726000568D9 /* DropBoxCredentials.swift */,
+				6BFEFF8B2D6674BF00D25F4F /* ExampleDropBoxCredentials.swift */,
+				6BDA590E2C091C56002F3121 /* ComponentViews.swift */,
+				DD55F2612A4CC89D00855F35 /* FileManager.swift */,
+				6B70566E2B9CEC31004FD4D0 /* FileManagerPhoto.swift */,
+				DDF184332B26F5FE00AB3226 /* BackgroundTasks.swift */,
+				DD6CF8DA2A33F59C0016948B /* ViewModelPhone.swift */,
+				DD04B7F42A2F92E300745FE0 /* Preview Content */,
+			);
+			path = MealWatcher;
+			sourceTree = "<group>";
+		};
+		DD04B7F42A2F92E300745FE0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				DD04B7F52A2F92E300745FE0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DD04B7FF2A2F92E300745FE0 /* MealWatcher Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				DD7FB1B62AD33D7700ED10E2 /* MealWatcher.entitlements */,
+				DD6AA18C2A38A12D000CC0B8 /* MealWatcher-Watch-App-Info.plist */,
+				DD7FB1B72AD33DB500ED10E2 /* MealWatcherApp.swift */,
+				6B26012D2C0A2BE00094A10D /* LoggerWatch.swift */,
+				DD6CF8D52A33E8C20016948B /* ContentView.swift */,
+				DD3E1FD72A4BE69000BE104E /* WatchFileManager.swift */,
+				DD6033CF2AE073D200B9A6E6 /* ExtendedRuntimeManager.swift */,
+				DD3E1FD22A4BCC0900BE104E /* CMUtils.swift */,
+				DD6CF8DC2A33FCCD0016948B /* ViewModelWatch.swift */,
+				DD04B8042A2F92E400745FE0 /* Assets.xcassets */,
+				DD04B8062A2F92E400745FE0 /* Preview Content */,
+			);
+			path = "MealWatcher Watch App";
+			sourceTree = "<group>";
+		};
+		DD04B8062A2F92E400745FE0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				DD04B8072A2F92E400745FE0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DD6CF8D92A33EB130016948B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				DDC0CF752A35B27800F29521 /* WatchConnectivityManager.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		DD9722562AD474120008A8B4 /* GenkiRing */ = {
+			isa = PBXGroup;
+			children = (
+				DD9722572AD474340008A8B4 /* BluetoothManager.swift */,
+				DD33F6302AD479BD00F47EF6 /* RingManager.swift */,
+			);
+			path = GenkiRing;
+			sourceTree = "<group>";
+		};
+		DDA2ED422A95A3910097854B /* Survey */ = {
+			isa = PBXGroup;
+			children = (
+				DDA2ED4D2A95A3FC0097854B /* KeyboardAware */,
+				DDA2ED4B2A95A3E80097854B /* SurveyView.swift */,
+				DDA2ED492A95A3DE0097854B /* SurveyModelClass.swift */,
+				DDA2ED472A95A3D30097854B /* SurveyHelper.swift */,
+				DDA2ED452A95A3C30097854B /* SampleSurvey.swift */,
+				DDA2ED432A95A3B10097854B /* EMAQuestions.swift */,
+			);
+			name = Survey;
+			sourceTree = "<group>";
+		};
+		DDA2ED4D2A95A3FC0097854B /* KeyboardAware */ = {
+			isa = PBXGroup;
+			children = (
+				DDA2ED4E2A95A3FC0097854B /* KeyboardAware.swift */,
+				DDA2ED4F2A95A3FC0097854B /* LICENSE */,
+				DDA2ED502A95A3FC0097854B /* README.md */,
+				DDA2ED512A95A3FC0097854B /* KeyboardInfo.swift */,
+			);
+			name = KeyboardAware;
+			path = Survey/KeyboardAware;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DD04B7EA2A2F92E100745FE0 /* MealWatcher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD04B80F2A2F92E400745FE0 /* Build configuration list for PBXNativeTarget "MealWatcher" */;
+			buildPhases = (
+				DD04B7E72A2F92E100745FE0 /* Sources */,
+				DD04B7E82A2F92E100745FE0 /* Frameworks */,
+				DD04B7E92A2F92E100745FE0 /* Resources */,
+				DD04B80E2A2F92E400745FE0 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD04B7FE2A2F92E300745FE0 /* PBXTargetDependency */,
+			);
+			name = MealWatcher;
+			packageProductDependencies = (
+				DD55F2642A4CE1E200855F35 /* SwiftyDropbox */,
+			);
+			productName = WatchPhoneAppDemo;
+			productReference = DD04B7EB2A2F92E100745FE0 /* MealWatcher.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DD04B7FA2A2F92E300745FE0 /* MealWatcher Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD04B80B2A2F92E400745FE0 /* Build configuration list for PBXNativeTarget "MealWatcher Watch App" */;
+			buildPhases = (
+				DD04B7F72A2F92E300745FE0 /* Sources */,
+				DD04B7F82A2F92E300745FE0 /* Frameworks */,
+				DD04B7F92A2F92E300745FE0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MealWatcher Watch App";
+			productName = "WatchPhoneAppDemo Watch App";
+			productReference = DD04B7FB2A2F92E300745FE0 /* MealWatcher Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DD04B7E32A2F92E100745FE0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					DD04B7EA2A2F92E100745FE0 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					DD04B7FA2A2F92E300745FE0 = {
+						CreatedOnToolsVersion = 14.3;
+						LastSwiftMigration = 1430;
+					};
+				};
+			};
+			buildConfigurationList = DD04B7E62A2F92E100745FE0 /* Build configuration list for PBXProject "MealWatcher" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DD04B7E22A2F92E100745FE0;
+			packageReferences = (
+				DD55F2632A4CE1E200855F35 /* XCRemoteSwiftPackageReference "SwiftyDropbox" */,
+			);
+			productRefGroup = DD04B7EC2A2F92E100745FE0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DD04B7EA2A2F92E100745FE0 /* MealWatcher */,
+				DD04B7FA2A2F92E300745FE0 /* MealWatcher Watch App */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DD04B7E92A2F92E100745FE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDA2ED532A95A3FC0097854B /* LICENSE in Resources */,
+				DD04B7F62A2F92E300745FE0 /* Preview Assets.xcassets in Resources */,
+				DDA2ED542A95A3FC0097854B /* README.md in Resources */,
+				6BDE2ECD2BBB167800FB668F /* PrivacyInfo.xcprivacy in Resources */,
+				DD04B7F32A2F92E300745FE0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD04B7F92A2F92E300745FE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BDE2ECE2BBB167800FB668F /* PrivacyInfo.xcprivacy in Resources */,
+				DD04B8082A2F92E400745FE0 /* Preview Assets.xcassets in Resources */,
+				DD04B8052A2F92E400745FE0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DD04B7E72A2F92E100745FE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDA2ED4C2A95A3E80097854B /* SurveyView.swift in Sources */,
+				DD6CF8D22A33E7C10016948B /* Camera.swift in Sources */,
+				DD6CF8DB2A33F59C0016948B /* ViewModelPhone.swift in Sources */,
+				DD55F2672A4CFA2B00855F35 /* DropBox.swift in Sources */,
+				DD33F6312AD479BD00F47EF6 /* RingManager.swift in Sources */,
+				DD18AEE32ACF489D00F59480 /* SettingsView.swift in Sources */,
+				6B26012A2C0A15310094A10D /* LoggerPhone.swift in Sources */,
+				6B70566F2B9CEC31004FD4D0 /* FileManagerPhoto.swift in Sources */,
+				DDA2ED522A95A3FC0097854B /* KeyboardAware.swift in Sources */,
+				DD33E1DF2A4C085400DAF016 /* WatchConnectivityManager.swift in Sources */,
+				DDA2ED482A95A3D30097854B /* SurveyHelper.swift in Sources */,
+				DDA2ED552A95A3FC0097854B /* KeyboardInfo.swift in Sources */,
+				6BFEFF8C2D6674CA00D25F4F /* ExampleDropBoxCredentials.swift in Sources */,
+				DD7FB1BB2AD33F2B00ED10E2 /* MealWatcherApp.swift in Sources */,
+				DDA2ED462A95A3C30097854B /* SampleSurvey.swift in Sources */,
+				6B25C2372D55072F000568D9 /* DropBoxCredentials.swift in Sources */,
+				6BDA590F2C091C56002F3121 /* ComponentViews.swift in Sources */,
+				DD6CF8D32A33E7C10016948B /* ContentView.swift in Sources */,
+				DD55F2622A4CC89D00855F35 /* FileManager.swift in Sources */,
+				6B70566B2B9CC46C004FD4D0 /* PhotoReviewView.swift in Sources */,
+				DDF184342B26F5FE00AB3226 /* BackgroundTasks.swift in Sources */,
+				DDA2ED442A95A3B10097854B /* EMAQuestions.swift in Sources */,
+				DD9722582AD474340008A8B4 /* BluetoothManager.swift in Sources */,
+				DDA2ED4A2A95A3DE0097854B /* SurveyModelClass.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD04B7F72A2F92E300745FE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD3E1FD32A4BCC0900BE104E /* CMUtils.swift in Sources */,
+				DD7FB1B82AD33DB500ED10E2 /* MealWatcherApp.swift in Sources */,
+				DD6CF8D62A33E8C20016948B /* ContentView.swift in Sources */,
+				6B26012E2C0A2BE00094A10D /* LoggerWatch.swift in Sources */,
+				DD6CF8DD2A33FCCD0016948B /* ViewModelWatch.swift in Sources */,
+				DD3E1FD82A4BE69000BE104E /* WatchFileManager.swift in Sources */,
+				DDC0CF772A35B27800F29521 /* WatchConnectivityManager.swift in Sources */,
+				DD6033D02AE073D200B9A6E6 /* ExtendedRuntimeManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DD04B7FE2A2F92E300745FE0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD04B7FA2A2F92E300745FE0 /* MealWatcher Watch App */;
+			targetProxy = DD04B7FD2A2F92E300745FE0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		DD04B8092A2F92E400745FE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		DD04B80A2A2F92E400745FE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		DD04B80C2A2F92E400745FE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/MealWatcher Watch App/MealWatcher.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/MealWatcher Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = EDHRW4QH65;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/MealWatcher-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MealWatcher;
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please allow for wrist motion data capture";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.SmartRingStudy.MealWatcher;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SmartRingStudy.MealWatcher.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		DD04B80D2A2F92E400745FE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/MealWatcher Watch App/MealWatcher.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/MealWatcher Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = EDHRW4QH65;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/MealWatcher-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MealWatcher;
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please allow for wrist motion data capture";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.SmartRingStudy.MealWatcher;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SmartRingStudy.MealWatcher.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		DD04B8102A2F92E400745FE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/MealWatcher/MealWatcher.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/MealWatcher/Preview Content\"";
+				DEVELOPMENT_TEAM = EDHRW4QH65;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/MealWatcher/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MealWatcher;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Please allow for connection to Wave Ring";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Please allow for connection to Wave Ring";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow for meal recording";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please Share Motion Data for Study Purposes";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please Share Motion Data for Study Purposes";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SmartRingStudy.MealWatcher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DD04B8112A2F92E400745FE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/MealWatcher/MealWatcher.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/MealWatcher/Preview Content\"";
+				DEVELOPMENT_TEAM = EDHRW4QH65;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/MealWatcher/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MealWatcher;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Please allow for connection to Wave Ring";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Please allow for connection to Wave Ring";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow for meal recording";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please Share Motion Data for Study Purposes";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please Share Motion Data for Study Purposes";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SmartRingStudy.MealWatcher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DD04B7E62A2F92E100745FE0 /* Build configuration list for PBXProject "MealWatcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD04B8092A2F92E400745FE0 /* Debug */,
+				DD04B80A2A2F92E400745FE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD04B80B2A2F92E400745FE0 /* Build configuration list for PBXNativeTarget "MealWatcher Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD04B80C2A2F92E400745FE0 /* Debug */,
+				DD04B80D2A2F92E400745FE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD04B80F2A2F92E400745FE0 /* Build configuration list for PBXNativeTarget "MealWatcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD04B8102A2F92E400745FE0 /* Debug */,
+				DD04B8112A2F92E400745FE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DD55F2632A4CE1E200855F35 /* XCRemoteSwiftPackageReference "SwiftyDropbox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dropbox/SwiftyDropbox.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DD55F2642A4CE1E200855F35 /* SwiftyDropbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD55F2632A4CE1E200855F35 /* XCRemoteSwiftPackageReference "SwiftyDropbox" */;
+			productName = SwiftyDropbox;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = DD04B7E32A2F92E100745FE0 /* Project object */;
+}

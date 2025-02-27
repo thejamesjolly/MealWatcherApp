@@ -1,0 +1,41 @@
+	# MealWatcher_Apple
+
+This app uses a file format mirroring Apple's Unified Logging System,
+but is implemented to keep log in a file which can be viewed WITHOUT 
+all other phone activity found in the Unified Logger.
+
+Susbsystem tags relate to files, but to save memory and space, file names are abbreviated.
+Here is a chart of all abbreviations.
+
+MealWatcher directory
+- Genki Ring
+--- BTM = Bluetooth Manager
+- Survey
+--- Surv  = SurveyView
+--- SMC = SurveyModelClass
+--- SH  = SurveyHelper
+--- EMA = EMAQuestions
+- LogP  = LoggerPhone
+- Cam = Camera
+- DBx = DropBox
+- CV  = ContentView
+- CpV = ComponentView
+- FileM  = FileManager
+- FileMP = FileManagerPhoto
+- Set = SettingsView
+- PhR = PhotoReview
+- VMP = ViewModelPhone
+- AppDel = BackgroundTasks (App Delegate calls)
+
+MealWatcher Watch App Directory
+- wLogW  = LoggerWatch
+- wERM   = ExtendedRuntimeManager
+- wFileM = WatchFileManager
+- wConf = Config
+- wCMU = CMUtils
+- wCV  = ContentView (watch)
+- wVMW = ViewModelWatch
+
+Unused 
+RM  = Ring Manager
+SS  = SampleSurvey
