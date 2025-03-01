@@ -1,0 +1,76 @@
+<resources>
+    <string name="app_name">MealWatcher</string>
+    <string name="acc_reading">Live Accelerometer Readings</string>
+    <string name="gyro_reading">Live Gyro-meter Readings</string>
+    <string name="acc_val_x">Accelerometer Readings - X</string>
+    <string name="acc_val_y">Accelerometer Readings - Y</string>
+    <string name="acc_val_z">Accelerometer Readings - Z</string>
+    <string name="gyro_val_x">Gyro-meter Readings - X</string>
+    <string name="gyro_val_y">Gyro-meter Readings - Y</string>
+    <string name="gyro_val_z">Gyro-meter Readings - Z</string>
+    <string name="start">Start the watch app</string>
+    <string name="stop">Stop the watch app</string>
+    <string name="record">OFF</string>
+    <string name="Ring">Ring</string>
+    <string name="Watch">Watch</string>
+    <string name="camera">Camera</string>
+    <string name="take_picture">Take Picture\n</string>
+    <string name="retake">Retake</string>
+    <string name="use_photo">Use Photo</string>
+    <string name="upload_files">Uploading files…</string>
+    <string name="pid_placeholder">9999</string>
+    <string name="ringid_placeholder">##</string>
+    <string name="pre_pic">Pre-</string>
+    <string name="post_pic">Post-</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="scroll_left">Scroll Left</string>
+    <string name="scroll_right">Scroll Right</string>
+    <string name="left">Previous</string>
+    <string name="right">Next</string>
+    <string name="connect_to_ring">...Tap HERE To Connect To Ring</string>
+    <string name="take_post_picture_text">Tap HERE to take After-Meal picture</string>
+    <string name="before_meal_checklist">BEFORE MEAL CHECKLIST</string>
+    <string name="after_meal_checklist">AFTER MEAL CHECKLIST</string>
+    <string name="tap_here_to_take_before_meal_picture">Tap HERE to take Before-Meal picture</string>
+    <string-array name="location">
+        <item>None</item>
+        <item>South Carolina</item>
+        <item>Rhode Island</item>
+        <item>Developer</item>
+    </string-array>
+
+
+    <string-array name="ring_ids">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+    </string-array>
+
+    <string-array name="wrist">
+        <item>Right</item>
+        <item>Left</item>
+    </string-array>
+
+    <string-array name="button">
+        <item>Top</item>
+        <item>Bottom</item>
+    </string-array>
+
+</resources>

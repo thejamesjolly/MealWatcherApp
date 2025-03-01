@@ -1,0 +1,210 @@
+{
+  "questions": [
+    {
+      "id": "This survey is for what meal/snack?",
+      "header": "Question 1/14",
+      "question": "This survey is for what meal/snack?",
+      "question_type": "single_select",
+      "options": [
+        "The meal/snack I just finished",
+        "A meal/snack earlier today or yesterday"
+      ]
+    },
+    {
+      "id": "What is the day and time of the meal/snack you are completing this survey for?",
+      "question": "What is the day and time of the meal/snack you are completing this survey for?",
+      "question_type": "single_text_field",
+      "show_if": {
+        "id": "This survey is for what meal/snack?",
+        "operation": "equals",
+        "value": "A meal/snack earlier today or yesterday"
+      }
+    },
+    {
+      "id": "Around how many servings of vegetables (not including potatoes) did you eat during this meal/snack? 1 serving = 1/2 cup or half of a fistful.",
+      "header": "Question 2/14",
+      "question": "Around how many servings of vegetables (not including potatoes) did you eat during this meal/snack? 1 serving = 1/2 cup or half of a fistful.",
+      "question_type": "single_text_field"
+    },
+    {
+      "id": "Around how many servings of fruit (not including fruit juice) did you eat during this meal/snack? 1 serving = 1 cup or a fistful-size or a medium-sized apple, banana, or orange.",
+      "header": "Question 3/14",
+      "question": "Around how many servings of fruit (not including fruit juice) did you eat during this meal/snack? 1 serving = 1 cup or a fistful-size or a medium-sized apple, banana, or orange.",
+      "question_type": "single_text_field"
+    },
+    {
+      "id": "Did you eat any of the following during this meal or snack?",
+      "header": "Question 4/14",
+      "question": "Did you eat any of the following during this meal or snack?",
+      "question_type": "multi_select",
+      "options": [
+        "Oil/Butter/Salad dressing",
+        "Cheese",
+        "Chips or Other Salty Snacks",
+        "Beef/Pork",
+        "Bacon",
+        "Hot dogs/Lunch Meat",
+        "Fried Food",
+        "None of these"
+      ]
+    },
+    {
+      "id": "Did you eat any of the following during this meal/snack?",
+      "header": "Question 5/14",
+      "question": "Did you eat any of the following during this meal or snack?",
+      "question_type": "multi_select",
+      "options": [
+        "Sugar or honey (include any added to your drinks)",
+        "Chocolate or other types of candy",
+        "Sweets (like donuts, cake, cookies, pie, brownies)",
+        "Ice cream or other frozen dessert",
+        "None"
+      ]
+    },
+    {
+      "id": "Select all beverages that you drank during your meal/snack",
+      "header": "Question 6/14",
+      "question": "Select all beverages that you drank during your meal/snack",
+      "question_type": "multi_select",
+      "options": [
+        "Water",
+        "Other calorie-free beverage (e.g., diet soda, tea, black coffee)",
+        "Caloric beverage (e.g., regular soda, juice, coffee w/ cream)",
+        "Alcohol (e.g., beer, wine, cocktail)",
+        "None"
+      ]
+    },
+    {
+      "id": "What utensil do you use to eat?",
+      "header": "Question 7/14",
+      "question": "What utensil do you use to eat?",
+      "question_type": "multi_select",
+      "options": [
+        "Fork",
+        "Knife",
+        "Spoon",
+        "Single hand",
+        "Both hand",
+        "Chopsticks",
+        "Other"
+      ]
+    },
+    {
+      "id": "Where did you get the food for this meal/snack?",
+      "header": "Question 8/14",
+      "question": "Where did you get the food for this meal/snack?",
+      "question_type": "multi_select",
+      "options": [
+        "Grocery store",
+        "Fast food",
+        "Restaurant/Bar",
+        "Convenience/Corner store",
+        "Farmer's market",
+        "Food Bank/Pantry",
+        {
+          "title": "Other",
+          "type": "multi_text"
+        }
+      ]
+    },
+    {
+      "id": "Who prepared your food for this meal/snack?",
+      "header": "Question 9/14",
+      "question": "Who prepared your food for this meal/snack?",
+      "question_type": "multi_select",
+      "options": [
+        "Made for myself",
+        "By someone in my household",
+        "By an acquaintance",
+        "At a restaurant",
+        "Unknown"
+      ]
+    },
+    {
+      "id": "Where did you eat this meal/snack?",
+      "header": "Question 10/14",
+      "question": "Where did you eat this meal/snack?",
+      "question_type": "single_select",
+      "options": [
+        "Home",
+        "Work/School",
+        "Friend/Family House",
+        "Restaurant/Cafe",
+        "'On the go' (car, walking, commuting)",
+        "Outside (park, hike)",
+        "Other"
+      ]
+    },
+    {
+      "id": "Were you doing anything else while eating?",
+      "header": "Question 11/14",
+      "question": "Were you doing anything else while eating?",
+      "question_type": "multi_select",
+      "options": [
+        "No, just eating.",
+        "Watching TV/media",
+        "Talking with another person",
+        "Working or doing chores",
+        "Walking or driving",
+        "Other"
+      ]
+    },
+    {
+      "id": "Select any statements that apply to you. During this meal or snack, I....",
+      "header": "Question 12/14",
+      "question": "Select any statements that apply to you. During this meal or snack, I....",
+      "question_type": "multi_select",
+      "options": [
+        "Was restricting my eating in order to control my weight",
+        "Felt like I couldn't stop eating, even if I wanted to",
+        "Ate much more quickly than usual",
+        "Felt guilty about what or how much I ate",
+        "None of these statements apply to me"
+      ]
+    },
+    {
+      "id": "Select any statements that apply to you. When I started this meal or snack, I....",
+      "header": "Question 13/14",
+      "question": "Select any statements that apply to you. When I started this meal or snack, I....",
+      "question_type": "multi_select",
+      "options": [
+        "Felt physically hungry (i.e., empty stomach)",
+        "Had a craving for a food I especially like",
+        "Did not feel physically hungry but still wanted to eat",
+        "None of these statements apply to me"
+      ]
+    },
+    {
+      "id": "Did anything go wrong with the devices during this meal/snack?",
+      "header": "Question 14/14",
+      "question": "Did anything go wrong with the devices during this meal/snack?",
+      "question_type": "multi_select",
+      "options": [
+        "No, all worked well",
+        "Ring failed",
+        "Watch failed",
+        "Phone app crashed",
+        "I did not wear the device(s)",
+        {
+          "title": "Other",
+          "type": "multi_text"
+        }
+      ]
+    },
+    {
+      "id": "Please explain why you didn't wear devices(s)?",
+      "question": "Please explain why you didn't wear devices(s)?",
+      "question_type": "single_text_area",
+      "show_if": {
+        "id": "Did anything go wrong with the devices during this meal/snack?",
+        "operation": "equals",
+        "value": "I did not wear the device(s)"
+      }
+    }
+  ],
+  "submit": {
+    "button_title": "Submit Answers",
+    "url": "local"
+  },
+  "auto_focus_text": true
+}

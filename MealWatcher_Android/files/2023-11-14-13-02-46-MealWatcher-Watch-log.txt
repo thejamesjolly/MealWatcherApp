@@ -1,0 +1,16 @@
+Log file created!
+In init() method
+Creating notification channel
+Completed creating notification channel
+Create StayAwake class
+Registering broadcast receiver
+Enabling ambient mode
+Creating the progress Bar used for checking phone status
+in onResume() of watch
+in onPause of watch
+In on stop of watch
+Data sent successfully with app started
+in on data changed of watch!
+in onResume() of watch
+in onPause of watch
+In on stop of watch

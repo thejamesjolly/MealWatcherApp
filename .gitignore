@@ -114,7 +114,7 @@ Temporary Items
 
 # IGNORE DROPBOX CREDENTIALS
 MealWatcher_Android/phoneApp/src/main/java/research/mealwatcher/AccessToken.java
-
+AccessToken.java
 
 # Gradle files
 .gradle/
@@ -130,8 +130,12 @@ local.properties
 captures/
 .externalNativeBuild/
 .cxx/
-*.apk
+
 output.json
+#built application files
+*.apk
+*.ap_
+#*.aab
 
 # IntelliJ
 *.iml

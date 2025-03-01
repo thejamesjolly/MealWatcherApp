@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdk 34   // The compileSdkVersion is the version of the API the app is compiled against. This means you can use Android API features included in that version of the API (as well as all previous versions, obviously).
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "research.mealwatcher"
+        minSdk 26 // minimum version of android os required to run the application. Android version - 11
+        targetSdk 34 // The target sdk version is the version of Android that your app was created to run on. If you do not specify the targetSdkVersion, it defaults to the minSdkVersion.
+        versionCode 1320000 // Number used for play store purpose.
+        versionName "1.3.2 B00 (Phone)" // Tracking for our purpose.
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //signingConfigs signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_9
+        targetCompatibility JavaVersion.VERSION_1_9
+    }
+    signingConfigs {
+        release {
+            keyAlias 'eatmon2'
+            keyPassword 'eatmon-key0'
+            //storefile file('C:\\Documents\\PartTime\\Adam Hoover\\eatmon2-orig\\AndroidKeys\\eatmon2.keystore')
+            //storePassword 'eatmon-keystore'
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.google.android.gms:play-services-wearable:18.0.0'
+    implementation 'androidx.wear:wear:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.6.0'
+    // For review photos
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    // Used for survey module
+    implementation project(":surveyandroid")
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.code.gson:gson:2.8.7'
+    // End of survey module dependencies
+    // Used for Dropbox uploading
+    implementation 'com.dropbox.core:dropbox-core-sdk:5.4.5'
+    // Use to implement support for interactions between the Wearables and Phones
+    implementation 'androidx.wear:wear-remote-interactions:1.0.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    // Required for ring
+    implementation 'com.github.weliem:blessed-android:2.0.6'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+
+}

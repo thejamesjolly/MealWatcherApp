@@ -1,0 +1,4 @@
+rootProject.name='MealWatcher'
+include ':watchApp'
+include ':phoneApp'
+include ':surveyandroid'
