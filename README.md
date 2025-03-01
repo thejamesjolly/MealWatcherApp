@@ -1,6 +1,6 @@
-# MealWatcher_Apple
+# MealWatcherApp
 
-Apple code for a iOS and WatchOS app used to record motion data from watch and smart ring.
+Code for mobile apps (both iOS and Android versions) used to record motion data from watch and smart ring.
 
 
 Project created in the lab group of Dr. Adam W. Hoover 
