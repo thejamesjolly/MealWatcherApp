@@ -1,10 +1,12 @@
+##### GIT IGNORE FOR XCODE AND MAC DEVELOPMENT #####
+
 # Specific Files for this project
 
-MealWatcher/MealWatcher/DropBoxCredentials.swift
+MealWatcher_Apple/MealWatcher/DropBoxCredentials.swift
 
 ## IntelliJ Idea Taken from "github/gitignore/Global/JetBrains.gitignore" repo
 ### Must Fully specify path or use "**" before ".idea" to access into xcodeproj
-MealWatcher/MealWatcher.xcodeproj/.idea/workspace.xml
+MealWatcher_Apple/MealWatcher.xcodeproj/.idea/workspace.xml
 
 
 # Xcode
@@ -101,3 +103,49 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+
+
+
+
+##### GIT IGNORE FOR ANDROID DEVELOPMENT #####
+
+
+# IGNORE DROPBOX CREDENTIALS
+MealWatcher_Android/phoneApp/src/main/java/research/mealwatcher/AccessToken.java
+
+
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log/OS Files
+*.log
+
+# Android Studio generated files and folders
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+output.json
+
+# IntelliJ
+*.iml
+.idea/
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
+
+# Keystore files
+*.jks
+*.keystore
+
+# Google Services (e.g. APIs or Firebase)
+google-services.json
+
+# Android Profiling
+*.hprof

@@ -1,34 +1,34 @@
 # MealWatcher_Apple
+
 Apple code for a iOS and WatchOS app used to record motion data from watch and smart ring.
+
 
 Project created in the lab group of Dr. Adam W. Hoover 
     at Clemson University, Clemson, SC, USA.
-Code written by Jimmy Nguyen and James Jolly in Fall of 2023,
-    with citations pulled from resources.
-Heavily edited and maintain by James Jolly starting in Spring of 2024.
+Apple code written by Jimmy Nguyen and James Jolly in Fall of 2023,
+    with citations pulled from resources;
+heavily edited and maintain by James Jolly starting in Spring of 2024.
+Android code written by Faria Armin, Lakshmi G Rangaraju, Adam Hoover, and James Jolly;
+maintained and primarily developed by Faria Armin starting in Summer of 2024.
 
 Creating this repository to allow for version control of the code
 and to have public release (under GNU GPLv3 License) for other researchers.
-Initial upload of this repository is app version 1.3.1 on Feb 27, 2025;
-previous versions starting at version 1.1.0 of the app 
-are tracked in a private repository to protect Dropbox credentials 
-which were previously declared in code. 
-
+For Apple, initial upload to this repository is app version 1.3.1 on Feb 27, 2025;
+    previous versions of the app starting at v1.1.0
+    are tracked in a private repository. 
+For Android, initial upload to this repository is app version 1.3.2;
+    previous versions of the app starting at "v1.2.3 B(00)"
+    are tracked in a private repository.
+    
 
 BEFORE USING THIS REPO:
-- Create a DropBox upload token following the tutorial listed in 
-"MealWatcher/MealWatcher/ExampleDropBoxCredentials.swift"
-- Update return values in the "MealWatcher/MealWatcher/DropBoxCredentials.swift" file.
+- DropBox Credentials are needed to upload the data from the app to a cloud server
+- IN APPLE:
+    - Create a DropBox upload token following the tutorial listed in 
+        "MealWatcher_Apple/MealWatcher/ExampleDropBoxCredentials.swift"
+    - Update return values in the "MealWatcher_Apple/MealWatcher/DropBoxCredentials.swift" file.
+- IN ANDROID:
+    - Create return values of tokens and place them in 
+    "MealWatcher_Android/phoneApp/src/main/java/research/mealwatcher/AccessToken.java" file
 
 
-
-KNOWN BUGS:
-- FileCount should never hit zero, even after forced DropBox upload,
-due to the active log file (current session) never being uploaded.
-Count instead should drop to 1 and upload and delete all other files on phone. 
-
-
-Long Term Improvements
-- Permissions check
---- Automatically Re-request permission if user declines a 
-    needed permission on first time using app
