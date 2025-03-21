@@ -29,14 +29,13 @@
 	<array>
 		<string>bluetooth-central</string>
 		<string>bluetooth-peripheral</string>
-		<string>external-accessory</string>
 		<string>fetch</string>
 		<string>processing</string>
 		<string>remote-notification</string>
 	</array>
 	<key>WKBackgroundModes</key>
 	<array>
-		<string></string>
+		<string>workout-processing</string>
 	</array>
 </dict>
 </plist>
