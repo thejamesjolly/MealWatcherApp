@@ -110,6 +110,19 @@ struct SettingsView: View {
                         photoCount = photoFM.listSize()
                         print("Current files: \(fileCount) to upload; \(photoCount) images.")
                         PhoneLogger.info(Subsystem: "Settings", Msg: "Loaded Settings View!")
+                        
+                        
+                        // Watch Sometimes struggles to recognize and respond to first app context update (esp. with DevView)
+                        // Adding this dummy app context on appear to enable more consistent updates for DevView and PID
+                        DispatchQueue.main.async {
+                            do {
+                                try WCSession.default.updateApplicationContext(["WatchMessagePrimer" : true])
+                                print("Application Context Updated! WatchMessagePrimer changed.")
+                            } catch {
+                                print("Failed to send application context: \(error.localizedDescription)")
+                            }
+                        }
+                        
                     }
                     .padding(.vertical)
                 DropBoxView(client: $client, participantID: participantID, LocationFlag: selectedOptionLocationFlag, iOSFiles: vm, showAlert: $showDBAlert, alertTitle: $alertDBTitle, alertMessage: $alertDBMessage)
@@ -293,7 +306,7 @@ struct SettingsView: View {
                     .buttonStyle(.bordered)
                     .padding(.trailing)
                     // None of this ever fires on Mac Catalyst :(
-                    .simultaneousGesture(LongPressGesture(minimumDuration: 10.0).onEnded { _ in
+                    .simultaneousGesture(LongPressGesture(minimumDuration: 5.0).onEnded { _ in
                         didLongPress = true
                         
                         DevViewFlag.toggle()

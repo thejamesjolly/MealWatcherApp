@@ -218,6 +218,7 @@ extension BluetoothViewModel: CBCentralManagerDelegate {
         DispatchQueue.main.async {
             if let error = error {
                 self.PhoneLogger.error(Subsystem: "BTMan", Msg: "Disconnect Error: \(error)")
+                self.stopRecording() // Stop all timers and close file stream since this is handled by ContentView when normally disconnecting
                 self.errorFlag = true //trigger flag to alert those who are watching
                 self.isRunning = false
                 return
