@@ -38,6 +38,9 @@ import WatchConnectivity
 import SwiftyDropbox
 import CoreBluetooth
 //import BackgroundTasks
+//import AVKit
+import AudioToolbox
+
 
 class HapticManager {
     
@@ -167,7 +170,7 @@ struct ContentView: View {
                     HStack {
                         /* Checks watch connectivity */
                         CheckWatchConnection(model: connectivityManager, reachable: $reachable)
-                            
+                        
                         /* Navigates to setting view */
                         Spacer()
                         
@@ -176,7 +179,7 @@ struct ContentView: View {
                             PhoneLogger.info(Subsystem: "CV", Msg: "Navigating to Settings")
                         }
                         
-
+                        
                         NavigationLink(destination: SettingsView(
                             safeParticipantID: $SafeParticipantID,
                             participantID: $participantID,
@@ -189,10 +192,10 @@ struct ContentView: View {
                             alertDBTitle: $alertDBTitle,
                             alertDBMessage: $alertDBMessage,
                             DevViewFlag: $DevViewFlag), isActive: $navigateToSettingsView) {
-                            EmptyView()
-                        }
+                                EmptyView()
+                            }
                     }
-
+                    
                     .padding()
                     
                     
@@ -243,7 +246,7 @@ struct ContentView: View {
                         }
                         .padding(.vertical, 5)
                         .padding(.horizontal, 3)
-
+                        
                         // Turn Ring On Check
                         HStack {
                             FourTapCheckTextItem_Plain(
@@ -390,12 +393,12 @@ struct ContentView: View {
                                 wasSurveySubmittedFlag: $wasSurveySubmittedFlag,
                                 survey: EMAQuestions,
                                 participantID: self.participantID), isActive: $navigateToSurveyView) {
-                                EmptyView()
-                            }
+                                    EmptyView()
+                                }
                         }
                         .padding(.vertical, 5)
                         .padding(.horizontal, 3)
-                                            
+                        
                     }
                     
                     
@@ -405,7 +408,7 @@ struct ContentView: View {
                         WatchStatus: connectivityManager.sensorFlag,
                         RingStatus: bluetoothViewModel.isRunning)
                     .padding(.vertical, 25) // extra space seperating status bar
-
+                    
                     
                     if DevViewFlag == true {
                         VStack{
@@ -443,7 +446,6 @@ struct ContentView: View {
                             }
                         }
                         
-
 //                        // Debugging Button // Comment Out if not in Use //
 //                        .padding()
 //                        Button (action: {
@@ -462,9 +464,6 @@ struct ContentView: View {
 
                     }
                     .padding(.vertical, 2)
-                    
-                    
-                    
                 }
             }
             .sheet(isPresented: self.$isPreImagePickerDisplay) {
@@ -527,6 +526,7 @@ struct ContentView: View {
                 else {
                     //                    HapticManager.instance.notification(type: .error)
                     PhoneLogger.error(Subsystem: "CV", Msg: "Bluetooth Ring Error occured.")
+                    AudioServicesPlaySystemSound(SystemSoundID(1304)) // Play alarm.caf file, a System Sound Preview
                     GeneralAlertSpecifier = .BT_error // 3 = bluetooth Error
                     GeneralAlertFlag = true
                     //clear flag now that alert has been notified
@@ -651,7 +651,7 @@ struct ContentView: View {
                 case .BT_error:
                     return Alert(
                         title: Text("Ring not recording properly"),
-                        message: Text("Please try resetting the ring by pressing, holding, and then releasing the top and bottom button at the same time. The buttons are located above and below the main daimond button."),
+                        message: Text("Please try resetting the ring by pressing, holding, and then releasing the top and bottom button at the same time. The buttons are located above and below the main diamond button."),
                         dismissButton: .default(Text("OK")))
                     
                 case .FutureFeatureAlert:
@@ -677,7 +677,7 @@ struct ContentView: View {
                 print("viewDidLoad set to true")
             }
             //FIX BEFORE RELEASE AND DEBUG
-            PhoneLogger.info(Subsystem: "CV", Msg: "Starting Phone App v1.3(1)")
+            PhoneLogger.info(Subsystem: "CV", Msg: "Starting Phone App v1.3(3)")
             
             //Log machine OS and model version
             PhoneLogger.info(Subsystem: "CV", Msg: "OS = \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)")

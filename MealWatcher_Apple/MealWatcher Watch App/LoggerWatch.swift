@@ -173,6 +173,34 @@ class WatchAppLogger: ObservableObject {
         return
     }
     
+    /// Terminates current log file and immediately begins a new file with current time.
+    /// Intended to act as a software power cycle since watch app is rarely fully closed
+    /// to trigger terminating the log file for each session.
+    func TerminateAndStartNewLogFile() {
+        // GENERATE NEW FILENAME
+        let vm = FileManagerViewModelWatch()
+        @AppStorage("storedID") var participantID: String = "99999"
+        // Get current date
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd-HH-mm-ss"
+        
+        self.logFileName = (participantID+"-"+df.string(from: date)+"-watch.log")
+        if let logFilePathCheck = vm.getFilePath(filename: self.logFileName) {
+            self.logFilePath = logFilePathCheck
+        }
+        else {
+            print("Error creating log file path! Using Default")
+            self.logFilePath = URL(string: "default-watch.log")
+        }
+        
+        // Stop current Log
+        self.stopLogStream()
+        
+        // With New Filename assigned, open new stream
+        self.openLogStream()
+        return
+    }
 
     /// Create an "info" log, used for standard log messages.
     /// Inputs are not allowed to have semicolons  in strings

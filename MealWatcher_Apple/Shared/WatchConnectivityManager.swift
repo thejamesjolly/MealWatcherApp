@@ -60,9 +60,12 @@ class WatchConnectivityManager: NSObject, ObservableObject {
 //    @Published var recievedFileNameToDelete: String = "Unknown"
     @Published var allRecievedFilesToDelete: [String] = []
     @Published var singleReceivedFileToDelete: String  = "default.txt"
-    @Published var fileReceivedFlag:Bool = false
+    @Published var fileReceivedFlag: Bool = false
     
-    @Published var DevViewFlag:Bool = false //set to false by default
+    @Published var DevViewFlag: Bool = false //set to false by default
+    
+    // Dummy variable
+    @Published var WatchMessagePrimer: Bool = false // used as a dummy message to prime watch for other messages
     
     @Published var errorFlag: Bool = false
     
@@ -306,6 +309,13 @@ extension WatchConnectivityManager: WCSessionDelegate {
             DispatchQueue.main.async {
                 self.DevViewFlag = applicationContext["DevViewFlag"] as! Bool
                 print("Message received and new ID value is: \(self.DevViewFlag)")
+            }
+        }
+        
+        if applicationContext["WatchMessagePrimer"] is Bool {
+            DispatchQueue.main.async {
+                self.WatchMessagePrimer = applicationContext["WatchMessagePrimer"] as! Bool
+                print("Message received and new ID value is: \(self.WatchMessagePrimer)")
             }
         }
         
