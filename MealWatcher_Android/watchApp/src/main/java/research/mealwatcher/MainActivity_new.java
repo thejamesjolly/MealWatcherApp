@@ -239,7 +239,7 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
                 Toast.makeText(getApplicationContext(), "Please rechanrge your watch soon!!", Toast.LENGTH_LONG).show();
                 logFunction_watch.information("Battery", "Watch's charge is below 50%, the value is: " + battPct + "%");
                 isToastShown = true;
-                AlertDialog.Builder batteryAllert = new AlertDialog.Builder(MainActivity_new.this, R.style.Base_ThemeOverlay_AppCompat_Dark);
+                AlertDialog.Builder batteryAllert = new AlertDialog.Builder(MainActivity_new.this, androidx.preference.R.style.Base_ThemeOverlay_AppCompat_Dark); //Base_ThemeOverlay_AppCompat_Dark
                 batteryAllert.setMessage("Please recharge your watch before the next recording.");
                 batteryAllert.setTitle("Recharge your watch");
                 batteryAllert.setCancelable(false);
@@ -643,6 +643,7 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
          */
         if (recordButtonStatus.equals("on")) {
             recordButtonStatus = "off";
+            isRecordingStarted = false;
             //System.out.println("In stop recording");
             //writeToLog("In stop recording");
 

@@ -14,7 +14,7 @@
 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 
 package research.mealwatcher;
 
@@ -22,6 +22,8 @@ import static com.welie.blessed.BluetoothBytesParser.FORMAT_UINT8;
 import static research.mealwatcher.ControlWatch.record_off_msg;
 import static research.mealwatcher.ControlWatch.record_on_msg;
 import static research.mealwatcher.MainActivity.applicationContext;
+import static research.mealwatcher.MainActivity.prev_ring_id_value;
+import static research.mealwatcher.MainActivity.sharedPreferences;
 
 import android.app.IntentService;
 import android.app.Notification;
@@ -33,6 +35,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.le.ScanResult;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ServiceInfo;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -107,7 +110,7 @@ public class ControlRing extends IntentService {
     private static TimerTask timerTask;
     public static boolean recordingStarted = false; //Sensor reading is started or not
 
-   // private int dataReceived;
+    // private int dataReceived;
 
     private MediaPlayer mediaPlayer;
     public ByteBuffer Convert;
@@ -131,11 +134,11 @@ public class ControlRing extends IntentService {
 
 
 
-    public String[] RingMACs = {"DF:1A:E1:6B:31:36", "C9:4D:A9:38:E0:0E", "C6:14:EC:B8:C1:AD", "FC:D2:41:EB:E4:85",
+    public String[] RingMACs = {"Any","DF:1A:E1:6B:31:36", "C9:4D:A9:38:E0:0E", "C6:14:EC:B8:C1:AD", "FC:D2:41:EB:E4:85",
             "C2:80:76:D8:CC:6F", "CA:3F:92:3B:35:05", "C0:74:E8:2C:DA:6E", "F0:C2:07:21:AB:78",
             "DF:D6:4D:4F:41:AB", "D5:0B:78:60:83:EE", "E9:A7:78:01:F2:64", "E6:FC:B2:D3:1A:B0",
             "E0:B7:28:1F:9D:1D", "F1:BF:DE:33:D4:7A", "DF:55:2D:B5:AB:7E", "E9:12:65:81:C0:BB",
-            "DC:59:03:8B:3D:88","EA:3D:7C:6E:2F:84", "C4:61:54:73:81:6E"};
+            "DC:59:03:8B:3D:88","EA:3D:7C:6E:2F:84", "C4:61:54:73:81:6E","E2:CA:9B:45:6C:CE","CD:DD:BB:D3:A5:6C"};
 
     public ControlRing() {
         super("ControlRing");
@@ -453,23 +456,44 @@ public class ControlRing extends IntentService {
                                     logFunction.error("Ring_Fil","Buffered output stream did not opened, and reason: " + e.toString());
                                     throw new RuntimeException(e);
                                 }
-                                }
+                            }
 
                             /* callback for receiving an advertisement from a peripheral */
                             @Override
                             public void onDiscoveredPeripheral(BluetoothPeripheral peripheral, ScanResult scanResult) {
+                                logFunction.information("Ring_BT", "Looking for: "+ RingMACs[MainActivity.prev_ring_id_value] + " Ring: " + prev_ring_id_value);
                                 /* stop scanning and connect if Wave ring found */
-                                String LogMessageText = "DiscoveredPeripheral " + peripheral.getName() + " " + peripheral.getAddress();
+                                String LogMessageText =  peripheral.getName() + " " + peripheral.getAddress();
                                 //Log.d("RINGLOG", LogMessageText + "\n");
-                                if ((MainActivity.prev_ring_id_value > 0 &&
-                                        peripheral.getAddress().equals(RingMACs[MainActivity.prev_ring_id_value]))) {
-                                    logFunction.information("Ring_BT","Discovered the required ring: " + (MainActivity.prev_ring_id_value+1));
+                                LogMessageText="DiscoveredPeripheral " + peripheral.getName() + " " + peripheral.getAddress();
+                                // Log.d("RINGLOG",LogMessageText+"\n");
+                                logFunction.information("Ring_BT", "Discovered peripherals: " + LogMessageText);
+                                Log.d("Ring MT","Discovered peripherals: " + peripheral.getName());
+
+                                if ((MainActivity.prev_ring_id_value== 0 && peripheral.getName().equals("Wave")||
+                                        (MainActivity.prev_ring_id_value > 0 &&
+                                                peripheral.getAddress().equals(RingMACs[MainActivity.prev_ring_id_value])) ||
+                                        peripheral.getAddress().equals(MainActivity.prev_MAC_address))) {
+
+                                    String MACaddress = peripheral.getAddress();
+                                    // Find the index of a specific string
+                                    int index = Arrays.asList(RingMACs).indexOf(MACaddress);
+
+                                    SharedPreferences.Editor mEditor = MainActivity.sharedPreferences.edit();
+                                    mEditor.putString("prev_ring_id_value", String.valueOf(index));
+                                    mEditor.putString("prev_ring_mac", MACaddress);
+                                    mEditor.apply();
+
+                                    //logFunction.information("Ring_BT", "Discovered the required ring: " + (MainActivity.prev_ring_id_value + 1));
+                                    logFunction.information("Ring_BT", "Discovered ring's MAC: " + MACaddress + " Ring: " + (index));
+                                    showToast(applicationContext,"MAC: " + MACaddress + " Ring: " + (index),1);
+
                                     central.stopScan();
                                     /* TO DO -- should this be done in a background service? */
                                     new Thread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            logFunction.information("Ring_BT","Getting connected to the ring");
+                                            logFunction.information("Ring_BT", "Getting connected to the ring");
                                             central.connectPeripheral(peripheral, peripheralCallback);
                                             /*wakeLockRing.acquire();
                                             if(wakeLockRing.isHeld()){
@@ -479,6 +503,24 @@ public class ControlRing extends IntentService {
                                     }).start();
                                     WavePacketTotalBytes = 0;
                                 }
+                                /*if ((MainActivity.prev_ring_id_value > 0 &&
+                                        peripheral.getAddress().equals(RingMACs[MainActivity.prev_ring_id_value]))) {
+                                    logFunction.information("Ring_BT","Discovered the required ring: " + (MainActivity.prev_ring_id_value+1));
+                                    central.stopScan();
+                                    *//* TO DO -- should this be done in a background service? *//*
+                                    new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            logFunction.information("Ring_BT","Getting connected to the ring");
+                                            central.connectPeripheral(peripheral, peripheralCallback);
+                                            *//*wakeLockRing.acquire();
+                                            if(wakeLockRing.isHeld()){
+                                                logFunction.information("Ring","WakeLock is acquired");
+                                            }*//*
+                                        }
+                                    }).start();
+                                    WavePacketTotalBytes = 0;
+                                }*/
                             }   // end of onDiscoveredPeripheral
 
                             /* callback for receiving a disconnect from a peripheral */

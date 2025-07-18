@@ -14,7 +14,7 @@
 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 
 package research.mealwatcher;
 
@@ -142,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
     static String prev_location_value; /* Variable to store the previous value of location.*/
 
     static int prev_ring_id_value; /* Variable to store the previous position of ring id value in ring id array.*/
+    static String prev_MAC_address;
 
     static int prev_location_id_value; /* Variable to store the previous position of location id value in location array.*/
 
@@ -149,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
     static int prev_button_position;
 
     public static MainActivity mainUIThread;    /* global variable to access main thread */
-    private static SharedPreferences sharedPreferences; /* Object to store the participant_id, ring_id and watch_id. */
+    static SharedPreferences sharedPreferences; /* Object to store the participant_id, ring_id and watch_id. */
 
     private TextureView textureView;    /* "surface" to which images will be drawn; defined in camera.xml */
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();    /* used to convert Android camera orientation to JPEG orientation */
@@ -419,6 +420,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
     @Override
     protected void onStart() {
         logFunction.information("Activity", "onStart");
@@ -532,13 +535,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
     /* change the display content to one of {home, camera, survey, settings} */
     @Override
     public void onContentChanged() {
 
 
         if (currentView == R.layout.home) {
-            logFunction.information("UI", "Home");
+            //logFunction.information("UI", "Home");
 
             launchWatchApp = (Button) findViewById(R.id.launchWatchApp);
             launchWatchApp.setOnClickListener(launchWatchAppListener);
@@ -1301,16 +1306,15 @@ public class MainActivity extends AppCompatActivity {
         prev_ring_id_value = Integer.parseInt(sharedPreferences.getString("prev_ring_id_value", "0"));
         prev_location_id_value = Integer.parseInt(sharedPreferences.getString("prev_location_id_value", "0"));
         prev_location_value = sharedPreferences.getString("prev_location_value", "None");
-        System.out.println("Location at the beginning: " + prev_location_value);
         prev_button_position = Integer.parseInt(sharedPreferences.getString("prev_button_position", "0"));
         prev_watch_wrist = Integer.parseInt(sharedPreferences.getString("prev_wrist_position", "0"));
+        prev_MAC_address = sharedPreferences.getString("prev_ring_mac", "0");
         //prev_watch_wrist = sharedPreferences.getString("prev_watch_id_value", "0");
         failedUpload = sharedPreferences.getInt("failed_upload", 0);
 
         LocalDateTime now = LocalDateTime.now();
         logFileName = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss"))+"-phone.log";
         currentLogFileName = prev_pid_value + "-" + logFileName;
-        System.out.println("Log file name in the currentLogFile: " + currentLogFileName);
 
         logFunction.setApplicationContext(applicationContext);
         logFile = new File(applicationContext.getExternalFilesDir(null), currentLogFileName);

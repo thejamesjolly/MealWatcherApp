@@ -27,6 +27,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -136,6 +137,7 @@ public class ControlWatch extends IntentService implements DataClient.OnDataChan
     static ExecutorService executor;
 
     private static LogFunction logFunction;
+    private MediaPlayer mediaPlayer;
 
     private static AccessToken token = new AccessToken();
 
@@ -210,6 +212,26 @@ public class ControlWatch extends IntentService implements DataClient.OnDataChan
         wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MealWatcher::WakelockTag");
 
         super.onCreate();
+    }
+
+    // API 34+ callback when 6 hours timeout is reached
+    //This is used for safety purpose. In here, when the user opens the app
+    // for stopping the recording the 6 hours timer of the dataSync is stopped, and restarted in the next session.
+    @Override
+    public void onTimeout(int serviceId, int reason) {
+        logFunction.error( "FS timed out", serviceId + ", Reason: " + reason);
+
+        if (mediaPlayer == null) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.alarm);
+            mediaPlayer.setOnCompletionListener(mp -> {
+                mp.release();
+                mediaPlayer = null;
+            });
+            mediaPlayer.start();
+        }
+
+        // Call stopSelf() quickly to avoid system failure
+        stopSelf(serviceId);
     }
 
     @Override

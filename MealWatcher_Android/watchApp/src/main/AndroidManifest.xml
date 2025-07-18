@@ -64,7 +64,8 @@
         <service
             android:name="research.mealwatcher.StayAwake"
             android:enabled="true"
-            android:exported="false">
+            android:exported="false"
+            android:foregroundServiceType="dataSync">
 <!--            android:foregroundServiceType="health">-->
             <intent-filter>
                 <action android:name="research.mealwatcher.ACTION_DATA_TRANSFER" />
