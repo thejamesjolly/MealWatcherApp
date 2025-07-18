@@ -391,7 +391,7 @@ public class StayAwake extends IntentService {
             MainActivity_new.sendMessageToMobile("/data_transfer_ack",
                     "all_files_sent", "yes");
             logFunction_watch.information("Watch","Send a message to the mobile: 'All files are sent.'");
-            if(wakeLock.isHeld()){
+            if(!MainActivity_new.isRecordingStarted && wakeLock.isHeld()){
                 wakeLock.release();
                 logFunction_watch.information("WakeLock","WakeLock is released.");
             }
