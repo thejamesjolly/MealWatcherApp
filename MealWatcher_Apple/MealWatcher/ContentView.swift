@@ -677,7 +677,7 @@ struct ContentView: View {
                 print("viewDidLoad set to true")
             }
             //FIX BEFORE RELEASE AND DEBUG
-            PhoneLogger.info(Subsystem: "CV", Msg: "Starting Phone App v1.3(3)")
+            PhoneLogger.info(Subsystem: "CV", Msg: "Starting Phone App v1.3(4)")
             
             //Log machine OS and model version
             PhoneLogger.info(Subsystem: "CV", Msg: "OS = \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)")
