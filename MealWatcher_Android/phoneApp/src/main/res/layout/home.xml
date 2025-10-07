@@ -8,28 +8,27 @@
     tools:context=".MainActivity"
     android:screenOrientation="landscape">
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="411dp"
-        android:layout_height="47dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <Button
             android:id="@+id/launchWatchApp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@android:color/transparent"
             android:text="Launch Watch App"
             android:textColor="@color/textColor"
-            android:background="@android:color/transparent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.238"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
@@ -38,16 +37,15 @@
             android:id="@+id/settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Settings"
-            android:textColor="@color/textColor"
+            android:layout_marginEnd="25dp"
             android:background="@android:color/transparent"
+            android:text="Settings"
             android:textAlignment="center"
+            android:textColor="@color/textColor"
             android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/launchWatchApp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.556"
-            app:layout_constraintStart_toEndOf="@+id/launchWatchApp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/launchWatchApp"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -56,7 +54,7 @@
         android:id="@+id/beforeMealButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:text="BEFORE MEAL"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
@@ -70,20 +68,20 @@
         android:id="@+id/afterMealButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:text="AFTER MEAL"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintBottom_toBottomOf="@+id/beforeMealButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.592"
         app:layout_constraintStart_toEndOf="@+id/beforeMealButton"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintTop_toTopOf="@+id/beforeMealButton"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="390dp"
+        android:layout_width="wrap_content"
         android:layout_height="409dp"
+        android:layout_marginTop="5dp"
         android:orientation="vertical"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -98,9 +96,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/before_meal_checklist"
+            android:textColor="@color/textColor"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/textColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -122,7 +120,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
-            android:layout_width="259dp"
+            android:layout_width="wrap_content"
             android:layout_height="341dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -216,8 +214,8 @@
                 android:id="@+id/startWatchSensor_checkbox"
                 android:layout_width="62dp"
                 android:layout_height="60dp"
-                android:button="@null"
                 android:background="@drawable/checkbox_custom"
+                android:button="@null"
                 android:clickable="false"
                 android:text=""
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -231,9 +229,9 @@
                 android:id="@+id/turnRingOn_checkbox"
                 android:layout_width="62dp"
                 android:layout_height="60dp"
-                android:clickable="false"
-                android:button="@null"
                 android:background="@drawable/checkbox_custom"
+                android:button="@null"
+                android:clickable="false"
                 android:text=""
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -246,9 +244,9 @@
                 android:id="@+id/connectRing_checkBox"
                 android:layout_width="62dp"
                 android:layout_height="60dp"
-                android:clickable="false"
-                android:button="@null"
                 android:background="@drawable/checkbox_custom"
+                android:button="@null"
+                android:clickable="false"
                 android:text=""
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -260,9 +258,9 @@
                 android:id="@+id/takePicture_checkBox"
                 android:layout_width="62dp"
                 android:layout_height="60dp"
-                android:clickable="false"
-                android:button="@null"
                 android:background="@drawable/checkbox_custom"
+                android:button="@null"
+                android:clickable="false"
                 android:text=""
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -616,14 +614,14 @@
         android:id="@+id/review_photos"
         android:layout_width="250dp"
         android:layout_height="57dp"
+        android:layout_marginBottom="10dp"
         android:text="Photo Review"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.602"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintTop_toTopOf="@+id/EndLine" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

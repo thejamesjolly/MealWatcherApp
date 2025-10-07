@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace 'research.mealwatcher'
-    compileSdkVersion 34
-    //buildToolsVersion "34.0.0"//"29.0.2"
+    namespace "research.mealwatcher"
+    compileSdk 36
+    /*buildToolsVersion "29.0.2"*/
     defaultConfig {
         applicationId "research.mealwatcher"
-        minSdkVersion 26
-        targetSdkVersion 34 // Android 14. 34 is Android 14.
-        versionCode 1380001
-        versionName "1.3.8 B00 (Watch)"
+        minSdk 26
+        targetSdk 36 // Android 16. 36 is Android 16.
+        versionCode 1400001
+        versionName "1.4.0 B00 (Watch)"
         externalNativeBuild {
             cmake {
                 cppFlags ""
@@ -25,15 +25,15 @@ android {
             keyPassword "eatmon-key0"
         }
     }
+    buildFeatures{
+        buildConfig = true
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             //signingConfig signingConfigs.release
         }
-    }
-    buildFeatures {
-        buildConfig = true
     }
     externalNativeBuild {
         cmake {
@@ -53,19 +53,19 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.android.support:wearable:2.9.0'
-    implementation 'com.google.android.gms:play-services-wearable:18.1.0'
-    implementation 'androidx.wear:wear-remote-interactions:1.0.0'
-    implementation 'androidx.wear:wear:1.0.0'
+    implementation 'com.google.android.gms:play-services-wearable:19.0.0'
+    implementation 'androidx.wear:wear-remote-interactions:1.1.0'
+    implementation 'androidx.wear:wear:1.3.0'
     implementation 'androidx.percentlayout:percentlayout:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.3.0'
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
     implementation 'com.android.support:wear:28.0.0'
    // implementation "androidx.wear:wear-input:1.1.0" //For getting the button position of the watch
     // Add support for wearable specific inputs
-    implementation "androidx.wear:wear-input:1.1.0"
-    implementation "androidx.wear:wear-input-testing:1.1.0"
+    implementation "androidx.wear:wear-input:1.2.0"
+    implementation "androidx.wear:wear-input-testing:1.2.0"
 
-    implementation 'com.dropbox.core:dropbox-core-sdk:3.1.3'
+    implementation 'com.dropbox.core:dropbox-core-sdk:7.0.0'
     //implementation project(':eatmon2mobileapp')
     compileOnly 'com.google.android.wearable:wearable:2.9.0'
 }

@@ -153,7 +153,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
+        android:layout_marginBottom="40dp"
         android:text="Upload to Dropbox"
+        app:layout_constraintBottom_toTopOf="@+id/pid_value"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toStartOf="parent"
@@ -177,26 +179,26 @@
         android:id="@+id/textViewFile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
         android:text="Files in storage:"
         android:textSize="15sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonUpload"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/buttonUpload" />
 
     <TextView
         android:id="@+id/fileRemain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="11dp"
         android:text="0"
         android:textSize="15sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFile"
         app:layout_constraintEnd_toStartOf="@+id/buttonUpload"
         app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toEndOf="@+id/textViewFile"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/textViewFile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

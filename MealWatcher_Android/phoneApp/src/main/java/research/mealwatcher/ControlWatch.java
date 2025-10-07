@@ -18,6 +18,8 @@
 
 package research.mealwatcher;
 
+import static android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC;
+
 import android.app.ActivityManager;
 import android.app.IntentService;
 import android.app.Notification;
@@ -27,10 +29,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
@@ -64,6 +66,7 @@ import com.google.android.gms.wearable.DataEventBuffer;
 import com.google.android.gms.wearable.DataItem;
 import com.google.android.gms.wearable.DataMap;
 import com.google.android.gms.wearable.DataMapItem;
+import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.Wearable;
 import com.google.common.util.concurrent.FutureCallback;
@@ -96,6 +99,7 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+/*import androidx.test.espresso.web.util.concurrent.FutureCallback;*/
 import androidx.wear.remote.interactions.RemoteActivityHelper;
 
 import org.json.JSONObject;
@@ -137,7 +141,6 @@ public class ControlWatch extends IntentService implements DataClient.OnDataChan
     static ExecutorService executor;
 
     private static LogFunction logFunction;
-    private MediaPlayer mediaPlayer;
 
     private static AccessToken token = new AccessToken();
 
@@ -212,26 +215,6 @@ public class ControlWatch extends IntentService implements DataClient.OnDataChan
         wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MealWatcher::WakelockTag");
 
         super.onCreate();
-    }
-
-    // API 34+ callback when 6 hours timeout is reached
-    //This is used for safety purpose. In here, when the user opens the app
-    // for stopping the recording the 6 hours timer of the dataSync is stopped, and restarted in the next session.
-    @Override
-    public void onTimeout(int serviceId, int reason) {
-        logFunction.error( "FS timed out", serviceId + ", Reason: " + reason);
-
-        if (mediaPlayer == null) {
-            mediaPlayer = MediaPlayer.create(this, R.raw.alarm);
-            mediaPlayer.setOnCompletionListener(mp -> {
-                mp.release();
-                mediaPlayer = null;
-            });
-            mediaPlayer.start();
-        }
-
-        // Call stopSelf() quickly to avoid system failure
-        stopSelf(serviceId);
     }
 
     @Override
@@ -326,6 +309,7 @@ public class ControlWatch extends IntentService implements DataClient.OnDataChan
         if (!watchAppStatus) {
 
             logFunction.information("Watch", "Sending intent to start the watch app");
+            System.out.println("Sending intent to start the watch app");
             watchAppStatus = true; // Watch app is started from mobile app.
 
             // Send a RemoteIntent to WearOS to start the watch application.
@@ -353,6 +337,26 @@ public class ControlWatch extends IntentService implements DataClient.OnDataChan
                     Executors.newSingleThreadExecutor());
         }
     }
+    /*void startWatchApp() {
+        // Start the watch app if it is not already started.
+        if (!watchAppStatus) {
+
+            logFunction.information("Watch", "Sending intent to start the watch app");
+            System.out.println("Sending intent to start the watch app");
+            watchAppStatus = true; // Watch app is started from mobile app.
+
+            // Send a RemoteIntent to WearOS to start the watch application.
+            Wearable.getNodeClient(context).getConnectedNodes()
+                    .addOnSuccessListener(nodes -> {
+                        for (Node node : nodes) {
+                            Wearable.getMessageClient(context)
+                                    .sendMessage(node.getId(), "/start_app", null)
+                                    .addOnSuccessListener(i -> Log.d("StartWatch", "Start Watch App"))
+                                    .addOnFailureListener(e -> Log.e("StartWatch", "Failed", e));
+                        }
+                    });
+        }
+    }*/
 
     static void sendDataItem(String path, String key, String message) {
         System.out.println("Sending data item!");
@@ -429,7 +433,9 @@ public class ControlWatch extends IntentService implements DataClient.OnDataChan
 
                         // Start this service as a foreground service and also display the notification
                         // to user informing that recording is started.
-                        //startForeground(42, notification);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                            startForeground(42, notification,FOREGROUND_SERVICE_TYPE_DATA_SYNC);
+                        }
                         wakeLock.acquire();
 
                         //System.out.println("RecordButtonState after watch starts recording final = " + MainActivity.watchRecordStatus);

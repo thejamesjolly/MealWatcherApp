@@ -352,6 +352,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //logFunction.information("Activity", "onCreate.");
 
+
         //For making the battery settings unrestricted
         PowerManager powerManager = (PowerManager) getApplicationContext().getSystemService(POWER_SERVICE);
         String packageName = "research.mealwatcher";
@@ -419,8 +420,6 @@ public class MainActivity extends AppCompatActivity {
         setButtonText(ringStatusButton, record_off_msg);
 
     }
-
-
 
     @Override
     protected void onStart() {
@@ -511,6 +510,7 @@ public class MainActivity extends AppCompatActivity {
             Thread thread_to_close_camera = new Thread(new Runnable() {
                 @Override
                 public void run() {
+
                     closeCamera();
                 }
             });
@@ -533,8 +533,6 @@ public class MainActivity extends AppCompatActivity {
 
         super.onPause();
     }
-
-
 
 
     /* change the display content to one of {home, camera, survey, settings} */
@@ -1106,6 +1104,7 @@ public class MainActivity extends AppCompatActivity {
 
     /* gets cameraID and opens camera; called when texture listener is set, and if app resumes */
     private void openCamera() {
+
         CameraManager manager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         try {
             String cameraId = manager.getCameraIdList()[0];
@@ -1129,13 +1128,26 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void closeCamera() {
+        System.out.println("Image_Capture_Done " + image_capture_done);
+        if(cameraCaptureSessions !=null){
+            if(image_capture_done==0){
+                try {
+                    cameraCaptureSessions.stopRepeating();
+                    cameraCaptureSessions.abortCaptures();
+                } catch (CameraAccessException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
         if (cameraDevice != null) {
 //            writeToLog("Closing the camera device");
             cameraDevice.close();
             cameraDevice = null;
-            /*if (cameraDevice == null) {
-                System.out.println("Camera Device Is Null");
-            }*/
+            image_capture_done = 0;
+
+
+
         }
         if (imageReader != null) {
             imageReader.close();
@@ -1789,6 +1801,9 @@ public class MainActivity extends AppCompatActivity {
         // When the back button is pressed in home layout, we are closing the application.
         if (currentView == R.layout.camera || currentView == R.layout.settings_layout ||
                 currentView == R.layout.image_preview || currentView == R.layout.review_photos) {
+            if(currentView == R.layout.camera){
+                closeCamera();
+            }
             MainActivity.mainUIThread.switchView(R.layout.home);
         } else {
             super.onBackPressed();

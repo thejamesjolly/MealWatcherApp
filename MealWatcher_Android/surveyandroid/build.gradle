@@ -3,8 +3,8 @@ apply plugin: 'maven-publish'
 //apply plugin: 'com.vanniktech.maven.publish'
 
 android {
-    namespace 'com.recoveryrecord.surveyandroid'
-    compileSdkVersion 33
+    namespace "com.recoveryrecord.surveyandroid"
+    compileSdk 33
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 33
+        targetSdk 33
         versionCode 3
         versionName "2.2.1"
 

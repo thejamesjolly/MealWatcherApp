@@ -44,6 +44,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.provider.Settings;
+//import android.support.constraint.BuildConfig;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -58,6 +59,7 @@ import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -239,7 +241,7 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
                 Toast.makeText(getApplicationContext(), "Please rechanrge your watch soon!!", Toast.LENGTH_LONG).show();
                 logFunction_watch.information("Battery", "Watch's charge is below 50%, the value is: " + battPct + "%");
                 isToastShown = true;
-                AlertDialog.Builder batteryAllert = new AlertDialog.Builder(MainActivity_new.this, androidx.preference.R.style.Base_ThemeOverlay_AppCompat_Dark); //Base_ThemeOverlay_AppCompat_Dark
+                AlertDialog.Builder batteryAllert = new AlertDialog.Builder(MainActivity_new.this, androidx.appcompat.R.style.Base_ThemeOverlay_AppCompat_Dark);
                 batteryAllert.setMessage("Please recharge your watch before the next recording.");
                 batteryAllert.setTitle("Recharge your watch");
                 batteryAllert.setCancelable(false);
@@ -256,6 +258,7 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
             }
         }
     };
+    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         System.out.println("In On create method of watch!");
@@ -343,7 +346,7 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
         //writeToLog("Registering broadcast receiver");
         // Register the broadcast receiver
         IntentFilter filter = new IntentFilter("com.example.ACTION_FINISH_ACTIVITY");
-        registerReceiver(broadcastReceiver, filter);
+        registerReceiver(broadcastReceiver, filter,RECEIVER_EXPORTED); 
 
         //writeToLog("Enabling ambient mode");
         /*
@@ -361,9 +364,8 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
             public void run() {
                 if (isStartWatchButtonClicked) {
                     isStartWatchButtonClicked = false;
-                    // Hide the ProgressBar when you receive a response from the phone app or when the timeout occurs
-                    //progressBar.setVisibility(View.GONE);
-                    // textViewProgressMessage.setVisibility(View.GONE);
+                    System.out.println("Informing User.");
+
 
                     // This method is called when the timeout occurs
                     informUser();
@@ -384,7 +386,8 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
                         StayAwake.sessionFinished = true;
                         serviceIntent.setAction("Clean");
                         startService(serviceIntent);
-                        Intent closingIntent = new Intent("com.example.ACTION_FINISH_ACTIVITY");
+                        Intent closingIntent = new Intent("com.example.ACTION_FINISH_ACTIVITY").setPackage(getPackageName());
+                        System.out.println("Package name: "+ getPackageName());
                         sendBroadcast(closingIntent);
 
                         // Closing the app after cleaning the resources.
@@ -532,9 +535,7 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
                 /*LocalDateTime now = LocalDateTime.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH-mm-ss");*/
                 logFunction_watch.information("User","Press the start recording");
-                recordingStartTime = LocalDateTime.now();
-                Log.d("TimeHandler", "Recording starts: " + recordingStartTime);
-                logFunction_watch.information("Time","Recording starts: " + recordingStartTime + " ms");
+
                 logFunction_watch.information("Watch","Send a message to the mobile: 'Is the phone app on for start recording'");
 
                 // Start the timeout timer
@@ -643,7 +644,6 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
          */
         if (recordButtonStatus.equals("on")) {
             recordButtonStatus = "off";
-            isRecordingStarted = false;
             //System.out.println("In stop recording");
             //writeToLog("In stop recording");
 
@@ -709,7 +709,7 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
                     System.out.println("in wearos_app ");
                     if (dataMap.getString("state").equals("stop")) {
                         logFunction_watch.information("Mobile","Got the message to stop this app");
-                        Intent closingIntent = new Intent("com.example.ACTION_FINISH_ACTIVITY");
+                        Intent closingIntent = new Intent("com.example.ACTION_FINISH_ACTIVITY").setPackage(getPackageName());
                         sendBroadcast(closingIntent);
                         //finishAndRemoveTask();
                         //finishAffinity();
@@ -734,6 +734,9 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
 
                         logFunction_watch.information("Mobile","Response of the phone: 'Phone app is On'");
                         delay = true; // this will delay the queue of sending the files
+                        recordingStartTime = LocalDateTime.now();
+                        Log.d("TimeHandler", "Recording starts: " + recordingStartTime);
+                        logFunction_watch.information("Time","Recording starts: " + recordingStartTime + " ms");
 
                         // Cancel the timeout when data is received from the phone app
                         startRecordingTimeoutHandler.removeCallbacks(startRecordingTimeoutRunnable);
@@ -871,35 +874,6 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
     public void onDestroy() {
 
         System.out.println("In destroy() of watch");
-        //logFunction_watch.information("Watch","In destroy() of watch");
-        /*logFunction_watch.information("Activity", "onDestroy()");
-
-        if(isRecordingFinished){
-            logFunction_watch.information("Watch", "App closed normally");
-        }else {
-            logFunction_watch.error("Watch", "App is crashed");
-        }
-
-        filesFailedUpload = logFunction_watch.failedToUpload();
-        // System.out.println("Number of files failed to upload: " + "On Destroy: " + filesFailedUpload);
-        SharedPreferences.Editor mEditor = sharedPreference.edit();
-        mEditor.putInt("failed_upload", filesFailedUpload);
-        mEditor.apply();
-
-        StayAwake.notificationManager.cancel(1);
-        recordButtonStatus = "off";
-        unregisterReceiver(broadcastReceiver);
-        unregisterReceiver(batteryLevelReceiver);
-        stopService(serviceIntent);
-        // Remove the timeout callback when the activity is destroyed
-        startRecordingTimeoutHandler.removeCallbacks(startRecordingTimeoutRunnable);
-        uploadFilesTimeoutHandler.removeCallbacks(uploadFilesTimeoutRunnable);
-
-        // 9:43 9:59
-        // Informing mobile app that watch app is stopped.
-        sendMessageToMobile("/watch_app_status", "app", "stopped");
-
-        logFunction_watch.information("Watch","Send a message to the mobile: 'Watch app is destroyed'");*/
 
 
         logFunction_watch.closeFile();
