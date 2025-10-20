@@ -25,6 +25,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.ServiceInfo;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 
@@ -233,6 +234,7 @@ public class StayAwake extends IntentService {
 //                        linear_accel[0] = event.values[0];
 //                        linear_accel[1] = event.values[1];
 //                        linear_accel[2] = event.values[2];
+
                         sensor_reading[13] = (float) (event.values[0] / 9.80665);
                         sensor_reading[14] = (float) (event.values[1] / 9.80665);
                         sensor_reading[15] = (float) (event.values[2] / 9.80665);
@@ -362,9 +364,11 @@ public class StayAwake extends IntentService {
                     continue;
                 }
             }else{
-                if(files[index].getName().endsWith(".txt") || files[index].getName().equals(MainActivity_new.logFileName)) {
+                if(files[index].getName().endsWith(".txt"))  {
                     System.out.println("Files to continue: " + files[index].getName());
                     //files[index].delete();
+                    continue;
+                }else if(files[index].getName().equals(MainActivity_new.logFileName)){
                     continue;
                 }
             }
@@ -500,7 +504,11 @@ public class StayAwake extends IntentService {
                                 mNotification = new Notification.Builder(getApplicationContext(), "MealWatcher_notification_channel").setSmallIcon(R.drawable.eatmon_notification_icon).setContentTitle("MealWatcher notification").setContentText("MealWatcher app running").setContentIntent(pendingIntent).setOngoing(true).build();
                                 System.out.println("is notification null " + Objects.isNull(mNotification));
                                 notificationManager.notify(1, mNotification);
-                                startForeground(100, mNotification);
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                                    startForeground(100, mNotification,ServiceInfo.FOREGROUND_SERVICE_TYPE_MANIFEST);
+                                }else {
+                                    startForeground(1, mNotification);
+                                }
 
                                 wakeLock.acquire();
                                 if(wakeLock.isHeld()){

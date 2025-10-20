@@ -229,15 +229,12 @@ public class ControlRing extends IntentService {
                         if(!recordingStarted){
                             // Register the channel with the system
                             displayNotification();
-                            startForeground(101, mNotification);
-                            /*if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
-                                //startForeground(101, mNotification, ServiceInfo.FOREGROUND_SERVICE_TYPE_HEALTH);
-                                startForeground(101, mNotification);
-
-                            }else{
-                                startForeground(101, mNotification);
-
-                            }*/
+                            //startForeground(101, mNotification);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                                startForeground(100, mNotification,ServiceInfo.FOREGROUND_SERVICE_TYPE_MANIFEST);
+                            }else {
+                                startForeground(1, mNotification);
+                            }
                             logFunction.information("Ring_MT", "Notification channel created.");
                         }
                         peripheralCallback = new BluetoothPeripheralCallback() {
@@ -245,7 +242,7 @@ public class ControlRing extends IntentService {
                             /* callback for receiving an advertisement of a service? */
                             @Override
                             public void onServicesDiscovered(@NotNull BluetoothPeripheral peripheral) {
-                                Log.d("BLuetooth","onService Discovered");
+                                Log.d("Bluetooth","onService Discovered");
                                 // request a higher MTU (number of bytes sent at a time); Genki's API requests 247?; iOS always asks for 185? (comment from Blessed)
                                 peripheral.requestMtu(247);     // my phone always returns max of 64?
                                 // prioritize low latency over low power (alternatives are LOW_POWER, or BALANCED)

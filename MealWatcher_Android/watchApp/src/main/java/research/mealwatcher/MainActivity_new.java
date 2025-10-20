@@ -197,7 +197,8 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
 
                 logFunction_watch.information("Watch","Send a message to the mobile: 'Watch app is destroyed'");
 
-                finishAffinity();
+                //finishAffinity();
+                finishAndRemoveTask();
             }
         }
     };
@@ -428,6 +429,7 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
 
     }
 
+
     void init() {
         logFunction_watch = new LogFunction_Watch();
         logFunction_watch.setApplicationContext(applicationContext);
@@ -438,8 +440,10 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
         logFunction_watch.setLogFile(logFile);
         logFunction_watch.openFile();
         String versionName = BuildConfig.VERSION_NAME;
+        String osVersion = android.os.Build.VERSION.RELEASE;
+
         logFunction_watch.information("Watch", "Version number of the watch app: " + versionName);
-        logFunction_watch.information("Watch", "Build version of the watch: " + Build.VERSION.SDK_INT);
+        logFunction_watch.information("Watch", "Build version of the watch: " + Build.VERSION.SDK_INT + " OS: " + osVersion);
         /*System.out.println("Position of the button: " + WearableButtons.getButtonLabel(applicationContext, KeyEvent.KEYCODE_BACK));
         logFunction_watch.information("WatchButton", "Position of the button: " + WearableButtons.getButtonLabel(applicationContext, KeyEvent.KEYCODE_STEM_PRIMARY));*/
         isToastShown = false;
@@ -535,6 +539,7 @@ public class MainActivity_new extends AppCompatActivity implements DataClient.On
                 /*LocalDateTime now = LocalDateTime.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH-mm-ss");*/
                 logFunction_watch.information("User","Press the start recording");
+                System.out.println("Send the message to know if the phone app on?");
 
                 logFunction_watch.information("Watch","Send a message to the mobile: 'Is the phone app on for start recording'");
 
