@@ -516,20 +516,6 @@ public class MainActivity extends AppCompatActivity {
             });
             thread_to_close_camera.start();
         }
-        /*timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("Timer is running");
-                if(recordingStarted){
-                    System.out.println("Closing the app");
-                    logFunction.information("Phone", "App is forcefully closed as exceeds the max duration");
-                    finishAffinity();
-                }
-            }
-        };
-        timer.scheduleAtFixedRate(timerTask, 0, 120 * 1000);
-*/
 
         super.onPause();
     }
@@ -751,7 +737,7 @@ public class MainActivity extends AppCompatActivity {
             watch_wrist_spinner.setSelection(prev_watch_wrist);
 
             filesRemaining.setText(String.valueOf(failedUpload));
-            System.out.println("FilesRemaining In the setting layout: " + failedUpload);
+            System.out.println("Files remaining In the setting layout: " + failedUpload);
 
             settingsSubmitButton = (Button) findViewById(R.id.settings_submit_button);
             settingsSubmitButton.setOnClickListener(settingsSubmitButtonOnClickListener);
@@ -761,7 +747,6 @@ public class MainActivity extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                     if (prev_ring_id_value != position) {
                         // Log.d("Settings", "Ring value while changing: " + position);
-                        System.out.println("ring id changed!");
                         settingChanged = "true";
                     }
                     prev_ring_id_value = position;
@@ -793,7 +778,6 @@ public class MainActivity extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                     if (prev_ring_id_value != position) {
                         // Log.d("Settings", "Ring value while changing: " + position);
-                        System.out.println("ring id changed!");
                         settingChanged = "true";
                     }
                     prev_ring_id_value = position;
@@ -962,7 +946,6 @@ public class MainActivity extends AppCompatActivity {
                                     List<File> imageFiles) throws ParseException {
         // Update the current position based on the direction
         currentPosition -= direction;
-        System.out.println("Current position inside scroll recycler view: " + currentPosition);
         // Ensure the position is within the bounds of your data list
         if (currentPosition < 0) {
             currentPosition = 0;
@@ -1129,7 +1112,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void closeCamera() {
         System.out.println("Image_Capture_Done " + image_capture_done);
-        if(cameraCaptureSessions !=null){
+        /*if(cameraCaptureSessions !=null){
             if(image_capture_done==0){
                 try {
                     cameraCaptureSessions.stopRepeating();
@@ -1138,7 +1121,7 @@ public class MainActivity extends AppCompatActivity {
                     throw new RuntimeException(e);
                 }
             }
-        }
+        }*/
 
         if (cameraDevice != null) {
 //            writeToLog("Closing the camera device");
@@ -1336,9 +1319,13 @@ public class MainActivity extends AppCompatActivity {
         String versionName = BuildConfig.VERSION_NAME;
         String manufacturer = Build.MANUFACTURER;
         String model = Build.MODEL;
+        String osVersion = android.os.Build.VERSION.RELEASE;
+        int sdkVersion = android.os.Build.VERSION.SDK_INT;
+
 
         logFunction.information("Phone", "Version number of the app: " + versionName);
-        logFunction.information("Phone", "Phone model: " + manufacturer + model);
+        logFunction.information("Phone", "Phone model: " + manufacturer + " " +model);
+        logFunction.information("Phone", "OS Version: " + osVersion + ", SDK: " + sdkVersion);
         logFunction.information("Description", "MT: Main_Thread, BT: Bluetooth connection.");
         logFunction.information("Settings", "PID value: " + prev_pid_value + " Location value: " + prev_location_value);
 
@@ -1405,7 +1392,6 @@ public class MainActivity extends AppCompatActivity {
                 // start recording the sensor data on watch.
                 //controlWatch.startWatchApp();
 
-                System.out.println("Launch watch app button is clicked");
                 watchServiceIntent.setAction("start_watch_app");
                 //startForegroundService(serviceIntent);
                 startService(watchServiceIntent);
@@ -1442,28 +1428,6 @@ public class MainActivity extends AppCompatActivity {
                 startService(ringServiceIntent);
             }
         };
-        /*watchRecordButtonOnClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("In on click listener of record");
-                if (ControlWatch.isFileTransferDone.equals("False")) {
-                    *//*Toast.makeText(MainActivity.applicationContext, "The watch file is saving. " +
-                                    "Please wait!!", Toast.LENGTH_LONG).show();*//*
-                    showToast("The watch file is saving. Please wait!!", 1);
-
-                } else {
-                    if (watchRecordStatus.equals("false")) {
-                        // Starting the watch app ensures that the app on watch is started before we
-                        // start recording the sensor data on watch.
-                        //controlWatch.startWatchApp();
-                        watchServiceIntent.setAction("start_watch_app");
-                        //startForegroundService(serviceIntent);
-                        startService(watchServiceIntent);
-                    }
-                }
-
-            }
-        };*/
 
         ringRecordButtonOnClickListener = new View.OnClickListener() {
             @Override
@@ -1500,28 +1464,35 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 image_capture_done = 0;
-                takePicture();
-                while (image_capture_done == 0) {   /* wait until async image capture is completed */
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException ex) {
-                        logFunction.error("Camera","Thread for image capture got an error: " + ex.toString());
-                        Thread.currentThread().interrupt();
-                    }
-                }
-
-                // CLosing camera should be done on separate thread such that the main UI logic is not interrupted.
+                // Taking picture is done on a separate thread so that the main UI logic is not interrupted.
                 // In other words, to ensure that our application doesn't gets stuck or crashed.
-                Thread thread_to_close_camera = new Thread(new Runnable() {
+                Thread thread_to_take_picture = new Thread(new Runnable() {
                     @Override
                     public void run() {
+
+                        takePicture();
+                        while (image_capture_done == 0) {   /* wait until async image capture is completed */
+
+                            try {
+                                Thread.sleep(500);  // sleep in THIS thread only
+                            } catch (InterruptedException e) {
+                                logFunction.error("Camera", "Camera thread interrupted: " + e.toString());
+                                Thread.currentThread().interrupt();
+                                return;
+                                }
+                        }
                         closeCamera();
+                        //Previewing the image of the pre/post
+
+                        runOnUiThread(() -> {
+                            MainActivity.mainUIThread.switchView(R.layout.image_preview);
+                        });
+
                     }
                 });
-                thread_to_close_camera.start();
+                thread_to_take_picture.start();
 
-                //Previewing the image of the pre/post
-                MainActivity.mainUIThread.switchView(R.layout.image_preview);
+
 
             }
         };
@@ -1542,9 +1513,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (PrePost == 1) { // If post picture is taken.
                     postPictureTaken = "true";
-                    System.out.println("Setting color");
                     setButtonColor(surveyButton, Color.parseColor("#FFA500"));
-                    System.out.println("Set color");
                     /*Toast.makeText(MainActivity.this, "Please take the survey if you are done with the meal.",
                             Toast.LENGTH_LONG).show();*/
                     showToast("Please take the survey if you are done with the meal.", 1);
@@ -1587,7 +1556,6 @@ public class MainActivity extends AppCompatActivity {
                     ring_id_spinner.setFocusable(false);
 
                     mEditor.putString("prev_pid_value", prev_pid_value);
-                    System.out.println("Saving the PID: " + prev_pid_value);
 
 
                     mEditor.putString("prev_ring_id_value", String.valueOf(prev_ring_id_value));
@@ -1602,7 +1570,6 @@ public class MainActivity extends AppCompatActivity {
                     //mEditor.putString("prev_watch_id_value", prev_watch_wrist);
                     mEditor.apply();
 
-                    System.out.println("File name is renamed as PID changed");
                     logFunction.closeFile();
                     String newFileName = prev_pid_value + "-" + logFileName; // Adding PID at the beginning of the logfile
                     currentLogFileName = newFileName;
@@ -1688,7 +1655,6 @@ public class MainActivity extends AppCompatActivity {
         recordingEndRunnable = new Runnable() {
             @Override
             public void run() {
-                System.out.println("Closing the app");
                 logFunction.information("Phone", "App is forcefully closed as it exceeds the max duration");
                 if(ControlRing.recordingStarted){
                     ringServiceIntent.setAction("disconnect_from_ring");
@@ -1723,7 +1689,6 @@ public class MainActivity extends AppCompatActivity {
             watch_wrist_spinner.setFocusableInTouchMode(true);
             ring_id_spinner.setFocusable(true);
             ring_id_spinner.setFocusableInTouchMode(true);
-            System.out.println("can we edit pid = " + pid_value.isFocusable() + pid_value.isEnabled());
 
             // Removing the onclick listener as we no longer need it as the user confirmed that settings has to be changed.
             pid_value.setOnClickListener(null);
@@ -1764,33 +1729,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void switchView(final int desired_view) {
-//        writeToLog("Switching the view");
-
-        /*currentView = desired_view;
+        currentView = desired_view;
         MainActivity.this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 setContentView(desired_view);
             }
-        });*/
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            currentView = desired_view;
-            MainActivity.this.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    setContentView(desired_view);
-                }
-            });
-        }, 500);  // 500ms delay
-        /*Log.d("MainActivity", "Delaying switchView execution");
-
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Log.d("MainActivity", "Executing switchView now");
-
-
-
-        }, 2000);  // 2-second delay*/
+        });
     }
+
 
 
 
@@ -1824,7 +1771,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onDestroy() {
-        System.out.println("Recording Done: " + isRecordingDone);
         logFunction.information("Activity","onDestroy" );
         if(isRecordingDone){
             logFunction.information("Phone", "App is closing normally");

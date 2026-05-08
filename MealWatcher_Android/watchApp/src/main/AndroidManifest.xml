@@ -68,7 +68,7 @@
             android:name="research.mealwatcher.StayAwake"
             android:enabled="true"
             android:exported="false"
-            android:foregroundServiceType="health|dataSync">
+            android:foregroundServiceType="health">
 
 <!--            android:foregroundServiceType="health">-->
             <intent-filter>
