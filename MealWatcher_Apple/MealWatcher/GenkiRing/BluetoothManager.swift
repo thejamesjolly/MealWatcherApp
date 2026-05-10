@@ -47,8 +47,17 @@ extension Data {
 }
 
 class BluetoothViewModel: NSObject, ObservableObject, CBPeripheralDelegate {
+    // General App variables
     static let instance = BluetoothViewModel()
     var PhoneLogger = PhoneAppLogger.shared
+    var LocationManager = BGLocationManagerPhone.shared
+    
+    //File Variables
+    let file_manager = LocalFileManager.instance
+    let vm = FileManagerViewModel()
+    @Published var filename: String?
+    
+    // Bluetooth Variables
     private var centralManager: CBCentralManager?
     private var peripherals: [CBPeripheral] = []
     var peripheralNames: [String] = []
@@ -61,9 +70,6 @@ class BluetoothViewModel: NSObject, ObservableObject, CBPeripheralDelegate {
     var wavePacketTotalBytes: Int = 0
     //var wavePacket = [UInt8](repeating: 0, count: 260)
     var wavePacket: [UInt8] = []
-    let file_manager = LocalFileManager.instance
-    let vm = FileManagerViewModel()
-    @Published var filename: String?
     var timeOffset: UInt64?
     @Published var allowNotifications: Bool = false
     @Published var currentURL: URL?
@@ -439,6 +445,9 @@ extension BluetoothViewModel: CBCentralManagerDelegate {
         self.wavePacketTotalBytes = 0
         // Clear offset to force grabbing start of fil
         self.timeOffset = nil
+        
+        PhoneLogger.info(Subsystem: "BTMan", Msg: "Starting LocManager")
+        LocationManager.start() // Start Location Manager to keep CPU awake in background
     }
     
     // Function to stop recording
@@ -462,6 +471,9 @@ extension BluetoothViewModel: CBCentralManagerDelegate {
         self.isMaxTimerRunning = false
         self.timerPeriodRecording?.invalidate()
         self.isPeriodTimerRunning = false
+        
+        PhoneLogger.info(Subsystem: "BTMan", Msg: "Stopping LocManager")
+        LocationManager.stop() // Start Location Manager to keep CPU awake in background
     }
     
     
