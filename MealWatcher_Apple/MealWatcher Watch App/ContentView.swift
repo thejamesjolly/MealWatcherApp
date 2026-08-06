@@ -152,7 +152,7 @@ struct ContentView: View {
                         Main_FileLabelCount = Main_CurrentFiles.count
                         
                         // FIX BEFORE RELEASE OR DEBUG
-                        WatchLogger.info(Subsystem: "wCV", Msg: "Starting Watch App v1.3(7)")
+                        WatchLogger.info(Subsystem: "wCV", Msg: "Starting Watch App v1.3(8)")
                         
                         // Add Device and OS information
                         WatchLogger.info(Subsystem: "CV", Msg: "OS = \(WKInterfaceDevice.current().systemName) \(WKInterfaceDevice.current().systemVersion)")
