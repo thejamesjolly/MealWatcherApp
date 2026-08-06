@@ -13,6 +13,8 @@
 		6B70566B2B9CC46C004FD4D0 /* PhotoReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B70566A2B9CC46C004FD4D0 /* PhotoReviewView.swift */; };
 		6B70566F2B9CEC31004FD4D0 /* FileManagerPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B70566E2B9CEC31004FD4D0 /* FileManagerPhoto.swift */; };
 		6BDA590F2C091C56002F3121 /* ComponentViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDA590E2C091C56002F3121 /* ComponentViews.swift */; };
+		6BDA5A8B2FAE56CC006BC0AE /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDA5A8A2FAE56C6006BC0AE /* CLLocationManager.swift */; };
+		6BDA5A8D2FAE5B4D006BC0AE /* LocationManagerPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDA5A8C2FAE5B44006BC0AE /* LocationManagerPhone.swift */; };
 		6BDE2ECD2BBB167800FB668F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6BDE2ECC2BBB167800FB668F /* PrivacyInfo.xcprivacy */; };
 		6BDE2ECE2BBB167800FB668F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6BDE2ECC2BBB167800FB668F /* PrivacyInfo.xcprivacy */; };
 		6BFEFF8C2D6674CA00D25F4F /* ExampleDropBoxCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFEFF8B2D6674BF00D25F4F /* ExampleDropBoxCredentials.swift */; };
@@ -82,6 +84,8 @@
 		6B70566A2B9CC46C004FD4D0 /* PhotoReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoReviewView.swift; sourceTree = "<group>"; };
 		6B70566E2B9CEC31004FD4D0 /* FileManagerPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerPhoto.swift; sourceTree = "<group>"; };
 		6BDA590E2C091C56002F3121 /* ComponentViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViews.swift; sourceTree = "<group>"; };
+		6BDA5A8A2FAE56C6006BC0AE /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
+		6BDA5A8C2FAE5B44006BC0AE /* LocationManagerPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerPhone.swift; sourceTree = "<group>"; };
 		6BDE2ECC2BBB167800FB668F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		6BFEFF8B2D6674BF00D25F4F /* ExampleDropBoxCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleDropBoxCredentials.swift; sourceTree = "<group>"; };
 		DD04B7EB2A2F92E100745FE0 /* MealWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealWatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +208,7 @@
 				DD7FB1B72AD33DB500ED10E2 /* MealWatcherApp.swift */,
 				6B26012D2C0A2BE00094A10D /* LoggerWatch.swift */,
 				DD6CF8D52A33E8C20016948B /* ContentView.swift */,
+				6BDA5A8A2FAE56C6006BC0AE /* CLLocationManager.swift */,
 				DD3E1FD72A4BE69000BE104E /* WatchFileManager.swift */,
 				DD6033CF2AE073D200B9A6E6 /* ExtendedRuntimeManager.swift */,
 				DD3E1FD22A4BCC0900BE104E /* CMUtils.swift */,
@@ -233,6 +238,7 @@
 		DD9722562AD474120008A8B4 /* GenkiRing */ = {
 			isa = PBXGroup;
 			children = (
+				6BDA5A8C2FAE5B44006BC0AE /* LocationManagerPhone.swift */,
 				DD9722572AD474340008A8B4 /* BluetoothManager.swift */,
 				DD33F6302AD479BD00F47EF6 /* RingManager.swift */,
 			);
@@ -390,6 +396,7 @@
 				DDA2ED482A95A3D30097854B /* SurveyHelper.swift in Sources */,
 				DDA2ED552A95A3FC0097854B /* KeyboardInfo.swift in Sources */,
 				6BFEFF8C2D6674CA00D25F4F /* ExampleDropBoxCredentials.swift in Sources */,
+				6BDA5A8D2FAE5B4D006BC0AE /* LocationManagerPhone.swift in Sources */,
 				DD7FB1BB2AD33F2B00ED10E2 /* MealWatcherApp.swift in Sources */,
 				DDA2ED462A95A3C30097854B /* SampleSurvey.swift in Sources */,
 				6B25C2372D55072F000568D9 /* DropBoxCredentials.swift in Sources */,
@@ -412,6 +419,7 @@
 				DD7FB1B82AD33DB500ED10E2 /* MealWatcherApp.swift in Sources */,
 				DD6CF8D62A33E8C20016948B /* ContentView.swift in Sources */,
 				6B26012E2C0A2BE00094A10D /* LoggerWatch.swift in Sources */,
+				6BDA5A8B2FAE56CC006BC0AE /* CLLocationManager.swift in Sources */,
 				DD6CF8DD2A33FCCD0016948B /* ViewModelWatch.swift in Sources */,
 				DD3E1FD82A4BE69000BE104E /* WatchFileManager.swift in Sources */,
 				DDC0CF772A35B27800F29521 /* WatchConnectivityManager.swift in Sources */,
@@ -636,6 +644,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/MealWatcher/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = MealWatcher;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Please allow for connection to Wave Ring";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Please allow for connection to Wave Ring";
@@ -676,6 +685,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/MealWatcher/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = MealWatcher;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Please allow for connection to Wave Ring";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Please allow for connection to Wave Ring";

@@ -27,13 +27,11 @@
     Purpose:
  Defines and manages watch sensor data streams and recordings to files.
  
- Utilizes "workouts" to record motion data, with function defined to convert data,
- track time, and monitor the recording.
+Utilizes CoreLocation Manager to maintain background processing while user is not looking at the watch
 */
 
 import Foundation
 import CoreMotion
-import HealthKit
 import WatchKit
 
 public var samplingRate = 100
@@ -68,18 +66,15 @@ struct sensorParam {
 }
 
 // Class CMutils implements functionality using CoreMotion framework
-class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate {
-//class CMUtils: NSObject {
+class CMUtils: NSObject {
     
     var WatchLogger = WatchAppLogger.shared
     @Published var maxTimerErrorFlag = false
     //let file_manager = LocalFileManager.instance
     let manager = CMMotionManager()
-    let healthStore = HKHealthStore()
     let queue = OperationQueue()
     
-    var WKsession: HKWorkoutSession? = nil
-    var builder: HKLiveWorkoutBuilder? = nil
+    var LocationManager = BGLocationManager.shared
     
     let interval = 1.0/Double(samplingRate)
     @Published var timeOffset: UInt64?
@@ -107,80 +102,6 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
     // Documentation for setting up a background workout session found here
     //https://developer.apple.com/documentation/healthkit/workouts_and_activity_rings/running_workout_sessions
     
-    func startWorkoutSession() {
-        WatchLogger.info(Subsystem: "wCMU", Msg: "Initializing new workout session")
-        // if session is already started, do nothing
-        if WKsession != nil {
-            return
-        }
-
-        if !HKHealthStore.isHealthDataAvailable() {
-            fatalError("HKHealthScore Unavailable!")
-        }
-
-        // The quantity type to write to the health store.
-        let typesToShare: Set = [
-            HKQuantityType.workoutType()
-        ]
-
-        // Request authorization for those quantity types.
-        print("Requesting healthstore authorization ... ")
-        self.healthStore.requestAuthorization(toShare: typesToShare, read: nil, completion: { (success, error) in
-                guard success else {
-                    fatalError("AUTHORIZATION ERROR: \(String(describing: error))")
-                }
-
-                // Create a workout configuration object
-                // ** Activity and location type have no effect on sensor data
-                let WKconfig = HKWorkoutConfiguration()
-                WKconfig.activityType = .walking
-                WKconfig.locationType = .indoor
-
-                do {
-                    // Initialize a new workout session with healthstore and configuration object
-                    self.WKsession = try HKWorkoutSession(healthStore: self.healthStore,
-                                                          configuration: WKconfig)
-
-                    // Initialize reference to builder object from our workout session
-                    self.builder = self.WKsession?.associatedWorkoutBuilder()
-                } catch {
-                    print(error)
-                    self.WKsession = nil
-                    return
-                }
-
-
-                // Create an HKLiveWorkoutDataSource object and assign it to the workout builder.
-                self.builder?.dataSource = HKLiveWorkoutDataSource(healthStore: self.healthStore,
-                                                                   workoutConfiguration: WKconfig)
-
-                // Assign delegates to monitor both the workout session and the workout builder.
-                self.WKsession?.delegate = self
-                self.builder?.delegate = self
-
-                // Start session and builder collection of health data
-                self.WKsession?.startActivity(with: Date())
-                self.builder?.beginCollection(withStart: Date()) { (success, error) in
-                    guard success else {
-                        print("Unable to begin builder collection of data: \(String(describing: error))")
-                        return
-                        //fatalError("Unable to begin builder collection of data: \(String(describing: error))")
-                    }
-
-                    // Indicate workout session has begun
-                    print("Workout activity started, builder has begun collection")
-                }
-        })
-
-    }
-
-    // Ends the current background workout session and collection of data
-    func endWorkoutSession() {
-        WatchLogger.info(Subsystem: "wCMU", Msg: "Ending Workout Session")
-        guard let session = WKsession else {return}
-        session.stopActivity(with: Date())
-        session.end()
-    }
     
     // Sets struct to all zeros, diagnostic to see where we are/aren't getting data
     func zeroParams() -> sensorParam {
@@ -190,7 +111,10 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
     
     // Begins data retrieval from sensors and appends to csv file in background
     func startUpdates(filename: String) {
-        startWorkoutSession()
+//        startWorkoutSession()
+        WatchLogger.info(Subsystem: "wCMU", Msg: "Starting LocManager")
+        LocationManager.start()
+        
         self.currentURL = vm.getFilePath(filename: filename)
         guard let currentURL = currentURL else {return}
         self.startRecording(fileURL: currentURL)
@@ -277,7 +201,9 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
         self.timeOffset = nil
         self.stopRecording()
         manager.stopDeviceMotionUpdates()
-        endWorkoutSession()
+//        endWorkoutSession()
+        WatchLogger.info(Subsystem: "wCMU", Msg: "Stopping LocManager")
+        LocationManager.stop()
     }
     
     // Handles sensor data struct, formats to string to write to csv
@@ -287,45 +213,7 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
     }
     
     
-    // Extra stubs&methods needed (code inside is suggested from apple dev forums,
-    // but we dont end up using any of it
-    func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
-        for _ in collectedTypes {
 
-                DispatchQueue.main.async() {
-                    // Update the user interface.
-                }
-            }
-    }
-
-    // Necessary func for workout builder
-    func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder) {
-        //let lastEvent = workoutBuilder.workoutEvents.last
-
-            DispatchQueue.main.async() {
-                // Update the user interface here.
-            }
-    }
-
-    // Necessary func for workout builder
-    func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
-        // Wait for the session to transition states before ending the builder.
-
-        if toState == .ended {
-            print("The workout has now ended.")
-            builder?.endCollection(withEnd: Date()) { (success, error) in
-                self.builder?.finishWorkout { (workout, error) in
-                    // I had to add this step
-                    //self.session = nil
-                }
-            }
-        }
-    }
-
-    // Necessary func for workout builder
-    func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
-        //code
-    }
     
     // Function to write data to the stream
     func writeToStream(data: Data) {

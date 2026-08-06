@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>App Uses Location Services to allow background operations while performing long running tasks, this insures data integrity on our side, and offers a better user experience</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App Uses Location Services to allow background operations while performing long running tasks, this insures data integrity on our side, and offers a better user experience</string>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
 		<string>com.SmartRingStudy.MealWatcher.bg_update</string>
@@ -34,6 +36,7 @@
 		<string>fetch</string>
 		<string>processing</string>
 		<string>remote-notification</string>
+		<string>location</string>
 	</array>
 	<key>WKBackgroundModes</key>
 	<array>
